@@ -1,0 +1,35 @@
+{
+  "product": {
+    "title": "مک‌بوک ایر M3 | فروشگاه رایاکس",
+    "content": "pages/product.html",
+    "extra": "pages/product.extra.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/02-product.js",
+      "scripts/03-cart.js",
+      "scripts/04-catalog.js",
+      "scripts/05-reviews.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/08-article.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js"
+    ]
+  },
+  "home": {
+    "title": "رایاکس | همراه انتخاب‌های دیجیتال شما",
+    "content": "pages/home.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js",
+      "scripts/11-home.js"
+    ],
+    "styles": [
+      "shared/home.css"
+    ]
+  }
+}

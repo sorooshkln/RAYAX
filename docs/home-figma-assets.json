@@ -1,0 +1,210 @@
+{
+  "fileKey": "j0GgByDyUWJzPzRh83nMh9",
+  "frame": "102:16060",
+  "assets": {
+    "hero-banner": {
+      "path": "src/assets/home/design/hero-banner.png",
+      "source": "102-16135-imgLifestyleBannerWord1375X3341.png"
+    },
+    "category-headphones": {
+      "path": "src/assets/home/design/category-headphones.png",
+      "source": "102-16195-imgImage21.png"
+    },
+    "category-game": {
+      "path": "src/assets/home/design/category-game.png",
+      "source": "102-16195-imgImage20.png"
+    },
+    "category-monitor": {
+      "path": "src/assets/home/design/category-monitor.png",
+      "source": "102-16195-imgImage22.png"
+    },
+    "category-mobile": {
+      "path": "src/assets/home/design/category-mobile.png",
+      "source": "102-16195-imgImage23.png"
+    },
+    "category-gpu": {
+      "path": "src/assets/home/design/category-gpu.png",
+      "source": "102-16195-imgImage24.png"
+    },
+    "category-pc": {
+      "path": "src/assets/home/design/category-pc.png",
+      "source": "102-16195-imgImage25.png"
+    },
+    "category-laptop": {
+      "path": "src/assets/home/design/category-laptop.png",
+      "source": "102-16195-imgImage26.png"
+    },
+    "promo-pc": {
+      "path": "src/assets/home/design/promo-pc.png",
+      "source": "102-16910-imgRayaxPcSage600X2111.png"
+    },
+    "promo-accessories": {
+      "path": "src/assets/home/design/promo-accessories.png",
+      "source": "102-16910-imgImage26.png"
+    },
+    "mini-laptop": {
+      "path": "src/assets/home/design/mini-laptop.png",
+      "source": "102-16927-imgImage29.png"
+    },
+    "mini-accessories": {
+      "path": "src/assets/home/design/mini-accessories.png",
+      "source": "102-16927-imgImage28.png"
+    },
+    "mini-console": {
+      "path": "src/assets/home/design/mini-console.png",
+      "source": "102-16927-imgImage27.png"
+    },
+    "product-ssd": {
+      "path": "src/assets/home/design/product-ssd.png",
+      "source": "102-16228-imgD5442F066340B6Fbcfdbcb4E7Ef6A2921.png"
+    },
+    "product-odyssey": {
+      "path": "src/assets/home/design/product-odyssey.png",
+      "source": "102-16228-imgD5442F066340B6Fbcfdbcb4E7Ef6A2922.png"
+    },
+    "product-monitor": {
+      "path": "src/assets/home/design/product-monitor.png",
+      "source": "102-16228-imgD5442F066340B6Fbcfdbcb4E7Ef6A2923.png"
+    },
+    "product-router": {
+      "path": "src/assets/home/design/product-router.png",
+      "source": "102-16228-imgD5442F066340B6Fbcfdbcb4E7Ef6A2924.png"
+    },
+    "product-phone": {
+      "path": "src/assets/home/design/product-phone.png",
+      "source": "102-16228-imgD5442F066340B6Fbcfdbcb4E7Ef6A2925.png"
+    },
+    "product-band": {
+      "path": "src/assets/home/design/product-band.png",
+      "source": "102-16542-imgD5442F066340B6Fbcfdbcb4E7Ef6A2921.png"
+    },
+    "product-buds": {
+      "path": "src/assets/home/design/product-buds.png",
+      "source": "102-16542-imgD5442F066340B6Fbcfdbcb4E7Ef6A2922.png"
+    },
+    "product-gpu": {
+      "path": "src/assets/home/design/product-gpu.png",
+      "source": "102-16542-imgD5442F066340B6Fbcfdbcb4E7Ef6A2923.png"
+    },
+    "product-gaming-buds": {
+      "path": "src/assets/home/design/product-gaming-buds.png",
+      "source": "102-16542-imgD5442F066340B6Fbcfdbcb4E7Ef6A2924.png"
+    },
+    "product-watch": {
+      "path": "src/assets/home/design/product-watch.png",
+      "source": "102-16542-imgD5442F066340B6Fbcfdbcb4E7Ef6A2925.png"
+    },
+    "product-laptop": {
+      "path": "src/assets/home/design/product-laptop.png",
+      "source": "row2-1.png"
+    },
+    "product-camera": {
+      "path": "src/assets/home/design/product-camera.png",
+      "source": "row2-2.png"
+    },
+    "product-speaker": {
+      "path": "src/assets/home/design/product-speaker.png",
+      "source": "row2-3.png"
+    },
+    "product-printer": {
+      "path": "src/assets/home/design/product-printer.png",
+      "source": "row2-5.png"
+    },
+    "product-console": {
+      "path": "src/assets/home/design/product-console.png",
+      "source": "row2-7.png"
+    },
+    "brand-logitech": {
+      "path": "src/assets/home/design/brand-logitech.png",
+      "source": "brands1-1.png"
+    },
+    "brand-apple": {
+      "path": "src/assets/home/design/brand-apple.png",
+      "source": "brands1-2.png"
+    },
+    "brand-samsung": {
+      "path": "src/assets/home/design/brand-samsung.png",
+      "source": "brands1-4.png"
+    },
+    "brand-xiaomi": {
+      "path": "src/assets/home/design/brand-xiaomi.png",
+      "source": "102-16958-imgImage668.png"
+    },
+    "brand-lenovo": {
+      "path": "src/assets/home/design/brand-lenovo.png",
+      "source": "102-16958-imgImage667.png"
+    },
+    "brand-anker": {
+      "path": "src/assets/home/design/brand-anker.png",
+      "source": "102-16958-imgImage665.png"
+    },
+    "brand-greenlion": {
+      "path": "src/assets/home/design/brand-greenlion.png",
+      "source": "102-16975-imgImage671.png"
+    },
+    "brand-asus": {
+      "path": "src/assets/home/design/brand-asus.png",
+      "source": "102-16975-imgImage670.png"
+    },
+    "brand-baseus": {
+      "path": "src/assets/home/design/brand-baseus.png",
+      "source": "102-16975-imgImage669.png"
+    },
+    "utility-earbuds": {
+      "path": "src/assets/home/design/utility-earbuds.png",
+      "source": "102-16948-imgImage674.png"
+    },
+    "utility-cable": {
+      "path": "src/assets/home/design/utility-cable.png",
+      "source": "102-16948-imgImage673.png"
+    },
+    "utility-adapter": {
+      "path": "src/assets/home/design/utility-adapter.png",
+      "source": "102-16948-imgImage672.png"
+    },
+    "utility-bag": {
+      "path": "src/assets/home/design/utility-bag.png",
+      "source": "102-16965-imgImage677.png"
+    },
+    "utility-powerbank": {
+      "path": "src/assets/home/design/utility-powerbank.png",
+      "source": "102-16965-imgImage676.png"
+    },
+    "utility-headphones": {
+      "path": "src/assets/home/design/utility-headphones.png",
+      "source": "102-16965-imgImage675.png"
+    },
+    "utility-stand": {
+      "path": "src/assets/home/design/utility-stand.png",
+      "source": "102-16982-imgImage680.png"
+    },
+    "utility-hub": {
+      "path": "src/assets/home/design/utility-hub.png",
+      "source": "102-16982-imgImage679.png"
+    },
+    "utility-keyboard": {
+      "path": "src/assets/home/design/utility-keyboard.png",
+      "source": "102-16982-imgImage678.png"
+    },
+    "blog-cover": {
+      "path": "src/assets/home/design/blog-cover.png",
+      "source": "102-17009-imgFrame57.png"
+    },
+    "icon-latest": {
+      "path": "src/assets/home/design/icon-latest.png",
+      "source": "icon-latest.png"
+    },
+    "icon-heart": {
+      "path": "src/assets/home/design/icon-heart.png",
+      "source": "icon-heart.png"
+    },
+    "icon-book": {
+      "path": "src/assets/home/design/icon-book.png",
+      "source": "icon-book.png"
+    },
+    "icon-search-ai": {
+      "path": "src/assets/home/design/icon-search-ai.png",
+      "source": "icon-search-ai.png"
+    }
+  }
+}

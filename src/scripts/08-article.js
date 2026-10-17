@@ -1,0 +1,4 @@
+const introBanner=$('.editorial-banner');introBanner.innerHTML='<img src="'+asset('macbook-editorial-banner-v1.png')+'" alt="مک‌بوک ایر با نورپردازی آبی و بنفش" loading="eager"><div class="editorial-banner-copy"><span>MacBook Air M3</span><h3>سبک برای حمل.<br>سریع برای خلق.</h3><p>قدرتی که در تمام روز، با شما حرکت می‌کند.</p><b>مک‌بوک ایر؛ یک قدم جلوتر از روزهای شلوغ.</b></div>';
+$('#article-toggle').addEventListener('click',()=>{const button=$('#article-toggle'),expanded=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',!expanded);$('#article-more').hidden=expanded;button.innerHTML=(expanded?'ادامه مطلب ':'نمایش کمتر ')+icon(expanded?'down':'up')});$('#article-config').addEventListener('click',()=>$('#product').scrollIntoView({behavior:'smooth',block:'start'}));setOverlayPosition();
+
+if(['#overview','#specifications','#reviews','#questions'].includes(location.hash))activateTab(location.hash.slice(1));
