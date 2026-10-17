@@ -21,3 +21,5 @@ The current product page is the visual baseline. Do not reconstruct already appr
 - Catalog page follows PLP.png: right-side desktop filters, four-column results, brand strip, sorting, load more and buying guide. Mobile uses two columns and a focus-managed filter sheet. The product-card HTML renderer is shared by home, related products and catalog in scripts/12-product-card.js; shared card styles are in shared/catalog-cards.css. Catalog inventory, prices and ranking are local prototype data.
 
 - Catalog review labels show stable section IDs at the upper left. When the user references an ID, inspect and edit only that section and directly required shared dependencies.
+
+- RAYAX Mag has a magazine index and a single-article template with shared editorial content in scripts/16-magazine-data.js. Magazine pages use navy, blue, white and gray, fine patterns, and light-gray image placeholders; no sample photos. Index supports topics, search, sorting and more results. Articles support an anchored contents list, reading progress, local saved state and copying the link. The existing shared header/footer are preserved.

@@ -55,5 +55,71 @@
       "shared/catalog-cards.css",
       "shared/catalog.css"
     ]
+  },
+  "contact": {
+    "title": "تماس با ما | رایاکس",
+    "content": "pages/contact.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js",
+      "scripts/14-contact.js"
+    ],
+    "styles": [
+      "shared/contact.css"
+    ]
+  },
+  "faq": {
+    "title": "سوالات متداول | رایاکس",
+    "content": "pages/faq.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js",
+      "scripts/15-faq.js"
+    ],
+    "styles": [
+      "shared/faq.css"
+    ]
+  },
+  "blog": {
+    "title": "رایاکس مگ | مجله تکنولوژی و راهنمای خرید",
+    "content": "pages/blog.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js",
+      "scripts/16-magazine-data.js",
+      "scripts/17-blog.js"
+    ],
+    "styles": [
+      "shared/magazine.css"
+    ]
+  },
+  "article": {
+    "title": "راهنمای خرید لپ‌تاپ | رایاکس مگ",
+    "content": "pages/article.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js",
+      "scripts/16-magazine-data.js",
+      "scripts/18-article.js"
+    ],
+    "styles": [
+      "shared/magazine.css"
+    ]
   }
 }
