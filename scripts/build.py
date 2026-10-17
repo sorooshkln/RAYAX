@@ -44,7 +44,8 @@ def build(page='product',package=False):
         images={name:uri('assets/'+name) for name in ['hero.jpg','detail.jpg','display.jpg','lifestyle.jpg','video-poster-v1.png','macbook-editorial-banner-v1.png','product-intro.webm']}
         images.update({str(p.relative_to(SRC/'assets')):uri(str(p.relative_to(SRC))) for p in (SRC/'assets/home').rglob('*') if p.is_file()})
         inlined_js=js.replace("const asset=name=>'assets/'+name;",'const embeddedAssets='+json.dumps(images)+';\nconst asset=name=>embeddedAssets[name]||\'assets/\'+name;')
-        inlined_html=inlined_html.replace('<link rel="stylesheet" href="styles.css">','<style>'+inlined_css+'</style>').replace('<script src="app.js"></script>','<script>'+inlined_js+'</script>')
+        inlined_html=re.sub(r'<link rel="stylesheet" href="styles\.css(?:\?[^\"]*)?">',lambda m:'<style>'+inlined_css+'</style>',inlined_html)
+        inlined_html=re.sub(r'<script src="app\.js(?:\?[^\"]*)?"></script>',lambda m:'<script>'+inlined_js+'</script>',inlined_html)
         (OUT/f'rayax-{page}.html').write_text(inlined_html)
         with zipfile.ZipFile(OUT/f'rayax-{page}.zip','w',zipfile.ZIP_DEFLATED) as z:
             for p in dest.rglob('*'):

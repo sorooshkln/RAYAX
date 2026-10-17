@@ -1,0 +1,13 @@
+let magCategory='all',magQuery='',magLimit=6;
+const initialMagCategory=new URLSearchParams(location.search).get('category');if(magStories.some(s=>s.category===initialMagCategory))magCategory=initialMagCategory;
+function renderMagFeed(){let stories=magStories.filter(s=>(magCategory==='all'||s.category===magCategory)&&(!magQuery||(s.title+' '+s.deck+' '+s.tags.join(' ')).includes(magQuery)));if($('#mag-sort').value==='popular')stories=[...stories].sort((a,b)=>b.popularity-a.popularity);$('#mag-article-grid').innerHTML=stories.slice(0,magLimit).map(magCard).join('');$('#mag-load-more').hidden=magLimit>=stories.length;$('#mag-empty').hidden=stories.length>0;$('#mag-results-status').textContent=fa(stories.length)+' مطلب'+(magCategory==='all'?'':' در '+magCategory);$$('[data-mag-filter]').forEach(button=>{const active=button.dataset.magFilter===magCategory;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))})}
+function selectMagCategory(category,scroll=false){magCategory=category;magLimit=6;renderMagFeed();if(scroll)$('#mag-feed').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'})}
+$$('[data-mag-filter]').forEach(b=>b.addEventListener('click',()=>selectMagCategory(b.dataset.magFilter)));
+$$('[data-mag-topic]').forEach(b=>b.addEventListener('click',()=>{magQuery='';$('#mag-search').value='';selectMagCategory(b.dataset.magTopic,true)}));
+$('#mag-sort').addEventListener('change',()=>{magLimit=6;renderMagFeed()});
+$('#mag-search-form').addEventListener('submit',e=>{e.preventDefault();magQuery=$('#mag-search').value.trim();magCategory='all';magLimit=6;renderMagFeed();$('#mag-feed').scrollIntoView({behavior:'smooth'})});
+$('#mag-search').addEventListener('search',()=>{if(!$('#mag-search').value){magQuery='';magLimit=6;renderMagFeed()}});
+$('#mag-reset').addEventListener('click',()=>{magQuery='';$('#mag-search').value='';selectMagCategory('all')});
+$('#mag-load-more').addEventListener('click',()=>{magLimit+=6;renderMagFeed()});
+$('#mag-editor-list').innerHTML=[magStories[0],magStories[4],magStories[1]].map((s,i)=>`<li><a href="${magArticleURL(s.id)}"><span class="mag-rank">${fa(i+1).padStart(2,'۰')}</span><div><h3>${s.title}</h3><small>${s.category} · ${fa(s.minutes)} دقیقه</small></div></a></li>`).join('');
+$('#mag-guide-grid').innerHTML=[magStories[5],magStories[3],magStories[4]].map(s=>`<a class="mag-guide-card" href="${magArticleURL(s.id)}"><div class="mag-cover" role="img" aria-label="جای تصویر مقاله ${s.title}"></div><div><span class="mag-kicker">${s.category}</span><h3>${s.title}</h3><small>${fa(s.minutes)} دقیقه مطالعه</small></div></a>`).join('');renderMagFeed();
