@@ -31,7 +31,7 @@ matchMedia('(min-width:768px)').addEventListener('change',arrangeStockBadge);arr
 const headerSpacer=document.createElement('div');headerSpacer.className='mobile-header-spacer';$('#site-header').before(headerSpacer);
 function sizeMobileHeader(){const height=$('#site-header').getBoundingClientRect().height+'px';headerSpacer.style.height=height;document.documentElement.style.setProperty('--mobile-header-height',height)}
 new ResizeObserver(sizeMobileHeader).observe($('#site-header'));sizeMobileHeader();
-function decorateLimitedProduct(){const card=$('#related-grid .related-card');if(card&&!card.querySelector('.low-stock'))card.insertAdjacentHTML('beforeend','<span class="low-stock">فقط ۲ عدد باقی مانده</span>')}
+function decorateLimitedProduct(){const card=$('#related-grid .related-card');if(card&&!card.querySelector('.low-stock')){const category=card.querySelector('.card-category');const row=document.createElement('span');row.className='related-card-tags';category.before(row);row.append(category);row.insertAdjacentHTML('beforeend','<span class="low-stock">فقط ۲ عدد باقی مانده</span>')}}
 if(typeof renderRelated==='function'){const originalRenderRelated=renderRelated;renderRelated=function(query=''){originalRenderRelated(query);decorateLimitedProduct()};decorateLimitedProduct()}
 
 const mobileNavigation=document.createElement('dialog');mobileNavigation.id='mobile-navigation';mobileNavigation.className='mobile-navigation';mobileNavigation.setAttribute('aria-label','منوی اصلی موبایل');document.body.append(mobileNavigation);

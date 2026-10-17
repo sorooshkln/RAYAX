@@ -7,6 +7,7 @@
       "scripts/01-core.js",
       "scripts/02-product.js",
       "scripts/03-cart.js",
+      "scripts/12-product-card.js",
       "scripts/04-catalog.js",
       "scripts/05-reviews.js",
       "scripts/06-navigation.js",
@@ -14,6 +15,9 @@
       "scripts/08-article.js",
       "scripts/09-mobile.js",
       "scripts/10-site-links.js"
+    ],
+    "styles": [
+      "shared/product-cards.css"
     ]
   },
   "home": {
@@ -26,10 +30,30 @@
       "scripts/07-account.js",
       "scripts/09-mobile.js",
       "scripts/10-site-links.js",
+      "scripts/12-product-card.js",
       "scripts/11-home.js"
     ],
     "styles": [
+      "shared/catalog-cards.css",
       "shared/home.css"
+    ]
+  },
+  "catalog": {
+    "title": "خرید لپ‌تاپ | فروشگاه رایاکس",
+    "content": "pages/catalog.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js",
+      "scripts/12-product-card.js",
+      "scripts/13-catalog.js"
+    ],
+    "styles": [
+      "shared/catalog-cards.css",
+      "shared/catalog.css"
     ]
   }
 }

@@ -1,0 +1,10 @@
+/* Shared product-card presentation. */
+.catalog-cards .related-card{min-width:0;position:relative;background:white;padding:12px;transform:none}
+.catalog-cards .product-card-button{padding:12px;width:100%;display:flex;flex-direction:column}
+.catalog-cards .related-card img{height:165px;object-fit:contain}
+.catalog-cards .related-card h3{font-size:13px;line-height:2;font-weight:500;margin-block:8px}
+.catalog-cards .card-price{font-size:14px}
+.catalog-cards .home-discount{position:absolute;top:12px;right:12px;z-index:2;pointer-events:none;font-size:12px;background:#ffe9e9;color:#cb4d53;border-radius:4px;padding:2px 6px;line-height:20px}
+.catalog-cards .home-old-price{display:block;color:#a7adb5;font-size:12px;text-decoration:line-through;margin-top:8px;line-height:1.4}
+.catalog-cards .home-old-price+.card-price{margin-top:2px;line-height:1.5;color:#ce5359}
+@media(max-width:767px){.catalog-cards .related-card{padding:0}.catalog-cards .product-card-button{padding:12px}.catalog-cards .related-card img{height:149px;padding:10px;margin:7px 0}.catalog-cards .product-card-button h3{font-size:12px;min-height:46px;margin-top:7px}.catalog-cards .card-category,.catalog-cards .card-price{margin-top:10px}.catalog-cards .card-badge{height:24px;min-height:24px;line-height:20px;padding-block:2px}}

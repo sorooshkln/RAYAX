@@ -1,0 +1,18 @@
+/* Suggested products follow the approved home product cards. */
+#related-grid{gap:16px}
+#related-grid .related-card{min-width:0;padding:12px;transform:none}
+#related-grid .product-card-button{padding:12px;width:100%;display:flex;flex-direction:column}
+#related-grid .related-card img{height:165px}
+#related-grid .related-card h3{font-size:13px;line-height:2;font-weight:500;margin-block:8px}
+#related-grid .card-price{font-size:14px}
+@media(max-width:767px){
+#related-grid{gap:12px;margin-inline:-16px;padding:0 16px 8px;scroll-padding-inline:16px}
+#related-grid .related-card{flex:0 0 221px;position:relative;padding:0}
+#related-grid .product-card-button{padding:12px}
+#related-grid .related-card img{height:149px;padding:10px;margin:7px 0}
+#related-grid .product-card-button h3{font-size:12px;min-height:46px;margin-top:7px}
+#related-grid .card-category,#related-grid .card-price{margin-top:10px}
+#related-grid .card-badge{height:24px;min-height:24px;line-height:20px;padding-block:2px}
+}
+
+#related-grid .related-card-tags{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-top:10px}#related-grid .related-card-tags .card-category{margin:0;white-space:nowrap}#related-grid .related-card-tags .low-stock{position:static;margin:0;padding:2px 4px;line-height:20px;font-size:12px;white-space:nowrap}

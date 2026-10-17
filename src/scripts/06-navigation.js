@@ -11,10 +11,12 @@ $('#mega-dialog').addEventListener('click',e=>{const b=e.target.closest('[data-m
 $$('[data-footer-category]').forEach(b=>b.addEventListener('click',()=>{renderMega(b.dataset.footerCategory);window.scrollTo({top:0,behavior:'instant'});openAnchored('#mega-dialog')}));
 $$('[data-social]').forEach(b=>b.addEventListener('click',()=>info('شبکه‌های اجتماعی رایاکس','<p>نشانی رسمی شبکه‌های اجتماعی در فایل مرجع مشخص نشده است. این بخش برای اتصال به حساب رسمی فروشگاه آماده است.</p>')));
 
-function navigateCatalog(query=''){if(typeof renderRelated==='function'&&$('#related')){$('#search').value=query;renderRelated(query);$('#related').scrollIntoView({behavior:'smooth'})}else{location.href=productPageURL()+'?search='+encodeURIComponent(query)+'#related'}}
+function navigateCatalog(query=''){if(typeof renderRelated==='function'&&$('#related')){$('#search').value=query;renderRelated(query);$('#related').scrollIntoView({behavior:'smooth'})}else{location.href=catalogPageURL()+'?search='+encodeURIComponent(query)}}
 if(typeof renderRelated!=='function'){
  $('#search-form').addEventListener('submit',e=>{e.preventDefault();navigateCatalog($('#search').value.trim())});
  $$('[data-tab-link]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();location.href=productPageURL()+'#'+a.dataset.tabLink}));
 }
 
 function productPageURL(){return location.pathname.endsWith('/')||location.pathname.endsWith('/index.html')?'../rayax-product/index.html':'rayax-product.html'}
+
+function catalogPageURL(){return location.pathname.endsWith('/')||location.pathname.endsWith('/index.html')?'../rayax-catalog/index.html':'rayax-catalog.html'}

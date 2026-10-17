@@ -17,3 +17,7 @@ The current product page is the visual baseline. Do not reconstruct already appr
 
 - Product article paragraphs are 14px and justified, using the full article width. FAQ questions are 16px/600 and answers 14px/500. Technical values sit close to their keys and use weight 600. Purchase button is compact, with tighter old/new price spacing. Gallery surfaces are transparent.
 - Home page uses the approved shared header/footer, dialogs, product-card styles and mobile navigation. Home-only sections and interactions are in home.html, home.css and 11-home.js. Both standalone and folder previews link home and product pages together.
+
+- Catalog page follows PLP.png: right-side desktop filters, four-column results, brand strip, sorting, load more and buying guide. Mobile uses two columns and a focus-managed filter sheet. The product-card HTML renderer is shared by home, related products and catalog in scripts/12-product-card.js; shared card styles are in shared/catalog-cards.css. Catalog inventory, prices and ranking are local prototype data.
+
+- Catalog review labels show stable section IDs at the upper left. When the user references an ID, inspect and edit only that section and directly required shared dependencies.
