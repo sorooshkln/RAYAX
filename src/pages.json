@@ -55,5 +55,24 @@
       "shared/catalog-cards.css",
       "shared/catalog.css"
     ]
+  },
+  "cart": {
+    "title": "سبد خرید | فروشگاه رایاکس",
+    "content": "pages/cart.html",
+    "extra": "pages/cart.extra.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js",
+      "scripts/12-product-card.js",
+      "scripts/14-checkout.js"
+    ],
+    "styles": [
+      "shared/catalog-cards.css",
+      "shared/checkout.css"
+    ]
   }
 }

@@ -136,7 +136,8 @@ const homeProducts=[
  }
 ];
 
-$('#home-offer-grid').innerHTML=[homeProducts[14],homeProducts[13],homeProducts[12],homeProducts[11],homeProducts[10]].map(p=>productCard(p,true)).join('')+`<a class="home-offer-more" href="#home-products"><svg aria-hidden="true"><use href="#i-arrow"/></svg><span>مشاهده بیشتر</span></a>`;
+const homeOffers=[homeProducts[14],homeProducts[13],homeProducts[12],homeProducts[11],homeProducts[10]];
+$('#home-offer-grid').innerHTML=[...homeOffers,...homeOffers].map(p=>productCard(p,true)).join('')+`<a class="home-offer-more" href="#home-products"><svg aria-hidden="true"><use href="#i-arrow"/></svg><span>مشاهده بیشتر</span></a>`;
 let homeFilter='all',homeQuery='';
 function renderHomeProducts(){const q=homeQuery.toLowerCase();const list=homeProducts.filter(p=>(homeFilter==='all'||p.category===homeFilter)&&(!q||(p.name+' '+p.brand+' '+p.label).toLowerCase().includes(q)));$('#home-latest-grid').innerHTML=list.length?list.slice(0,homeFilter==='all'&&!homeQuery?10:list.length).map(p=>productCard(p)).join(''):'<p class="home-empty">محصولی پیدا نشد. <button class="text-link" id="home-clear-search">نمایش همه محصولات</button></p>';$('#home-search-status').textContent=q?fa(list.length)+' محصول برای «'+homeQuery+'» پیدا شد.':'';$$('[data-home-filter]').forEach(b=>b.setAttribute('aria-selected',b.dataset.homeFilter===homeFilter));if(matchMedia('(max-width:767px)').matches){const active=$('[data-home-filter][aria-selected="true"]');if(active){const rail=active.parentElement,tabRect=active.getBoundingClientRect(),railRect=rail.getBoundingClientRect();if(tabRect.left<railRect.left||tabRect.right>railRect.right)rail.scrollBy({left:tabRect.left+tabRect.width/2-railRect.left-railRect.width/2,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'})}}$('#home-clear-search')?.addEventListener('click',()=>{homeFilter='all';homeQuery='';$('#search').value='';renderHomeProducts()})}
 function selectHomeCategory(category){homeFilter=category;homeQuery='';$('#search').value='';renderHomeProducts();$('#home-products').scrollIntoView({behavior:'smooth'})}
@@ -169,3 +170,5 @@ $$('[data-home-social]').forEach(b=>b.addEventListener('click',()=>info('ارت�
 $('.home-page').addEventListener('click',e=>{if(e.target.closest('[data-home-product]'))location.href=productPageURL()});
 const initialHomeQuery=new URLSearchParams(location.search).get('search');if(initialHomeQuery)navigateCatalog(initialHomeQuery);
 setOverlayPosition();
+
+$$('.home-offer-arrow').forEach(b=>b.addEventListener('click',()=>$('#home-offer-grid').scrollBy({left:(b.dataset.dir==='next'?-1:1)*($('#home-offer-grid .related-card').offsetWidth+12)*2,behavior:'smooth'})));

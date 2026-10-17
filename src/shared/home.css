@@ -86,3 +86,23 @@
 .home-categories .home-category.more{padding:8px 4px;gap:6px}
 .home-categories .home-category.more .more-decoration{height:46.8px;line-height:normal}
 }
+
+/* Offers heading colors, scroll arrows, "more" card. */
+.home-offers .home-offer-heading h2{color:var(--text)}
+.home-offers .home-offer-heading h2 span{color:#d32f45}
+.home-offers .home-offer-heading h2 svg{color:#d32f45}
+.home-offers{position:relative}
+.home-offer-arrow{position:absolute;top:50%;z-index:2;width:40px;height:40px;display:grid;place-items:center;background:white;border-radius:50%;box-shadow:0 2px 8px #1e243026;color:var(--text)}
+.home-offer-arrow svg{width:18px;height:18px}
+.home-offer-arrow.prev{right:4px}.home-offer-arrow.next{left:4px}
+@media(max-width:767px){.home-offer-arrow{width:32px;height:32px}.home-offer-arrow svg{width:14px;height:14px}.home-offer-arrow.prev{right:0}.home-offer-arrow.next{left:0}}
+.home-offer-more{flex-direction:row;justify-content:flex-start}
+
+.home-offer-more{flex-direction:column;justify-content:center}
+.home-brand-grid button img,.home-page .home-brand-grid button img{width:100%;max-width:112px;height:44px;max-height:44px;object-fit:contain}
+.home-contact-strip a{font-size:14.4px;font-weight:600}
+.home-contact-strip a svg{width:22px;height:22px}
+.home-contact-strip button{width:42px;height:42px}
+.home-contact-strip button svg{width:24px;height:24px}
+.home-offers .home-countdown>span{width:44px;box-sizing:border-box}
+@media(max-width:767px){.home-discovery{gap:52px}.home-brand-grid button{padding:10px}.home-brand-grid button img,.home-page .home-brand-grid button img{width:100%;max-width:64px;height:28px;max-height:28px;object-fit:contain}}

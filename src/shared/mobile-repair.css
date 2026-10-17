@@ -2,7 +2,7 @@
 /* Author display rules must never override the browser's closed-dialog state. */
 dialog:not([open]) { display: none !important; }
 .mobile-menu { display: none; }
-@media (min-width: 768px) { .container { max-width: 1440px; } }
+@media (min-width: 768px) { .container { max-width: 1520px; } }
 .rayax-mag { display: inline-flex; align-items: center; gap: 5px; }
 .mag-badge { display: inline-block; padding: 1px 6px; border-radius: 4px; background: #2546f5; color: white; font-size: 12px; line-height: 1.7; font-weight: 700; transform: skew(-5deg); }
 .nav-row nav > a, .nav-row nav > button:not(.categories) { display: inline-flex; align-items: center; gap: 8px; }
@@ -133,3 +133,21 @@ dialog:not([open]) { display: none !important; }
   .editorial-split h3, .editorial-closing h3 { font-size: 23px; line-height: 1.8; }
   .editorial-split p, .editorial-closing p { font-size: 14px; line-height: 2.2; }
 }
+
+/* Product cards: 8px inner padding, bolder 18px price aligned with its currency. */
+.related-card .product-card-button{padding:8px!important}
+.related-card .card-price{display:flex!important;align-items:baseline;justify-content:flex-start;gap:4px;font-size:18px!important;font-weight:700!important;line-height:1.5}
+.related-card .card-price small{font-size:12px!important;font-weight:400!important}
+/* Announcement: logo sits on the text's right. */
+.announcement .snapp-logo{order:-1}
+/* Cart: full-site backdrop, dialog under the cart button. */
+.cart-dialog{top:var(--cart-top,var(--header-bottom));max-height:calc(100dvh - var(--cart-top,var(--header-bottom)) - 16px);border-radius:12px}
+.cart-dialog::backdrop{background:#1e243099;backdrop-filter:none}
+
+.catalog-cards .home-discount,.home-discount{background:#cb4d53!important;color:#fff!important}
+/* Card badges share one top line and height. */
+.related-card .home-discount{top:20px!important;right:8px!important;height:24px!important;line-height:20px!important;padding:2px 8px!important;box-sizing:border-box}
+.related-card .product-card-button .card-badge{height:24px!important;min-height:24px!important;line-height:20px!important;padding:2px 8px!important;box-sizing:border-box;display:inline-flex;align-items:center}
+/* Account menu: full-site backdrop, panel under the account button. */
+.profile-dialog{top:var(--cart-top,var(--header-bottom));max-height:calc(100dvh - var(--cart-top,var(--header-bottom)) - 16px);border-radius:12px}
+.profile-dialog::backdrop{background:#1e243099;backdrop-filter:none}
