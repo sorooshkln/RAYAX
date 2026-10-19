@@ -13,7 +13,7 @@
 .plp-total{flex:none;height:30px;padding:0 12px;border-radius:999px;background:var(--plp-soft);font-size:12px;font-weight:600;line-height:30px;color:var(--muted)}
 
 /* Categories */
-.plp-cats{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 6px;margin-bottom:16px;scrollbar-width:none;scroll-snap-type:x proximity}
+.plp-cats{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 14px;margin-bottom:12px;scrollbar-width:none;scroll-snap-type:x proximity}
 .plp-cats::-webkit-scrollbar{display:none}
 .plp-cat{display:flex;align-items:center;gap:10px;flex:none;padding:6px 6px 6px 16px;border:1px solid var(--plp-line);border-radius:999px;background:#fff;scroll-snap-align:start;transition:border-color .2s,background-color .2s,box-shadow .2s}
 .plp-cat:hover{border-color:var(--plp-control)}
@@ -34,8 +34,8 @@
 .plp-brand img{max-width:88px;max-height:28px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:filter .2s,opacity .2s}
 .plp-brand>span{font-size:14px;font-weight:800;color:#666565;letter-spacing:.02em}
 .plp-brand:hover{border-color:var(--plp-control)}.plp-brand:hover img{filter:none;opacity:1}
-.plp-brand i{position:absolute;top:-7px;left:-7px;display:none;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--primary);color:#fff;box-shadow:0 0 0 2px #fff}
-.plp-brand i svg{width:12px;height:12px}
+.plp-brand i{position:absolute;top:6px;left:6px;display:none;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--primary);color:#fff}
+.plp-brand i svg{width:11px;height:11px}
 .plp-brand[aria-pressed="true"]{border-color:var(--primary);box-shadow:inset 0 0 0 1px var(--primary)}
 .plp-brand[aria-pressed="true"] img{filter:none;opacity:1}
 .plp-brand[aria-pressed="true"] i{display:grid}
@@ -132,7 +132,6 @@
 .plp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:12px}
 .plp-grid:focus{outline:0}
 .plp-grid .related-card{border:1px solid var(--plp-line);border-radius:14px;transition:border-color .2s,box-shadow .2s}
-.plp-grid .related-card:hover{border-color:#d9dee5;box-shadow:0 8px 24px #1e24300f}
 .plp-grid .related-card img{height:150px}
 .plp-grid .is-unavailable img{filter:grayscale(1);opacity:.55}
 .plp-grid .is-unavailable h3{color:#8393a2}
