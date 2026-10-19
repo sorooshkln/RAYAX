@@ -16,7 +16,32 @@ cart=cart.filter(x=>x&&typeof x.key==='string'&&typeof x.name==='string'&&typeof
 let reviews=read('rayax-reviews-v1',[]);if(!Array.isArray(reviews))reviews=[];
 reviews=reviews.filter(x=>x&&typeof x.name==='string'&&typeof x.text==='string'&&Number.isInteger(x.rating)&&x.rating>=1&&x.rating<=5);
 function toast(text,type='info'){const el=$('#toast');el.textContent=text;el.className='toast visible '+type;if(type==='info'&&/ثبت|اضافه|کپی|ورود|خارج|حذف/.test(text))el.classList.replace('info','success');if(/حداقل|حداکثر|وارد کنید|در دسترس نیست/.test(text))el.classList.replace('info','warning');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),3500)}
-function openDialog(id){const dialog=$(id);if(!dialog.open)dialog.showModal()}
+const mobileModalMedia=matchMedia('(max-width:767px), (hover:none) and (pointer:coarse)');
+let mobileModalScroll=null,mobileModalTheme=null;
+function lockMobileModal(){
+ if(!mobileModalMedia.matches||mobileModalScroll!==null)return;
+ mobileModalScroll=window.scrollY;
+ document.documentElement.style.setProperty('--modal-scroll-top',-mobileModalScroll+'px');
+ document.documentElement.classList.add('mobile-modal-open');
+ const theme=$('meta[name="theme-color"]');
+ mobileModalTheme=theme?.getAttribute('content')??null;
+ theme?.setAttribute('content','#ffffff');
+}
+function syncMobileModalState(){
+ if(mobileModalMedia.matches&&$('dialog[open]')){lockMobileModal();return}
+ if(mobileModalScroll===null)return;
+ const scroll=mobileModalScroll;mobileModalScroll=null;
+ document.documentElement.classList.remove('mobile-modal-open');
+ document.documentElement.style.removeProperty('--modal-scroll-top');
+ const theme=$('meta[name="theme-color"]');
+ if(mobileModalTheme!==null)theme?.setAttribute('content',mobileModalTheme);
+ mobileModalTheme=null;
+ window.scrollTo({top:scroll,behavior:'instant'});
+}
+function openDialog(id){const dialog=$(id);if(dialog._closeTimer){clearTimeout(dialog._closeTimer);dialog._closeTimer=null;dialog.classList.remove('closing');return}if(!dialog.open){lockMobileModal();try{dialog.showModal()}catch(error){syncMobileModalState();throw error}}}
+document.addEventListener('close',syncMobileModalState,true);
+new MutationObserver(syncMobileModalState).observe(document.body,{subtree:true,attributes:true,attributeFilter:['open']});
+mobileModalMedia.addEventListener('change',syncMobileModalState);
 $$('[data-close]').forEach(btn=>btn.addEventListener('click',()=>btn.closest('dialog').close()));
 $$('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}}));
 function info(title,html){$('#info-title').textContent=title;$('#info-content').innerHTML=html;openDialog('#info-dialog')}
@@ -24,3 +49,8 @@ const infoPages={account:['حساب کاربری','<p>ورود با شماره �
 Object.assign(infoPages,{articles:['مقالات و راهنمای خرید','<p>راهنمای انتخاب مک‌بوک و مشخصات محصول در بخش معرفی همین صفحه در دسترس است.</p><div class="info-links"><a href="#overview" data-category-link>معرفی و راهنمای محصول</a></div>'],terms:['قوانین و مقررات',''],privacy:['حریم خصوصی',''],trust:['نمادها و پرداخت','']});
 $$('[data-info]').forEach(btn=>btn.addEventListener('click',event=>{if(btn.dataset.info==='contact')location.href=contactPageURL();else if(btn.dataset.info==='articles'){event?.preventDefault();location.href=blogPageURL()}else info(...infoPages[btn.dataset.info])}));
 $('#info-content').addEventListener('click',e=>{if(e.target.closest('[data-category-link]'))$('#info-dialog').close()});
+
+// Animated dialog close: play the exit animation, then really close (Escape goes through the same path)
+{const nativeClose=HTMLDialogElement.prototype.close;
+HTMLDialogElement.prototype.close=function(value){if(!this.open||this._closeTimer||matchMedia('(prefers-reduced-motion: reduce)').matches)return nativeClose.call(this,value);this.classList.add('closing');this._closeTimer=setTimeout(()=>{this._closeTimer=null;this.classList.remove('closing');nativeClose.call(this,value)},190)};
+document.addEventListener('cancel',e=>{if(e.target instanceof HTMLDialogElement&&!e.defaultPrevented){e.preventDefault();e.target.close()}},true);}

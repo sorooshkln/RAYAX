@@ -126,3 +126,83 @@ main.container>.product-offer-strip{margin-bottom:0}main.container>.product-offe
 .snapp-plan-head{background:var(--canvas)}
 .snapp-plan li:first-child .snapp-step{background:var(--text)}
 .snapp-offer-text b{flex-wrap:wrap;white-space:nowrap}@media(max-width:767px){.snapp-offer{padding:12px;gap:12px}.snapp-offer-text b{font-size:13px;gap:6px}}
+
+/* Field standard (all pages): border-only focus, vertically centred placeholder, chevron-down on native selects */
+input::placeholder,textarea::placeholder{line-height:normal}
+select:not([multiple]):not([size]){-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%235f6878' d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 12px center;background-size:14px;padding-left:36px}
+.ac-select select{background-image:none}
+
+/* Favourite heart: red and filled when saved */
+#favorite[aria-pressed=true]{color:#e5484d}
+#favorite[aria-pressed=true] svg{fill:#e5484d}
+#favorite.pop svg{animation:fav-pop .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes fav-pop{0%{transform:scale(.7)}100%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){#favorite.pop svg{animation:none}}
+
+/* Dialog motion: medium-fast, smooth in and out */
+@keyframes dlg-in{from{opacity:0;transform:translateY(12px) scale(.98)}}
+@keyframes dlg-out{to{opacity:0;transform:translateY(10px) scale(.98)}}
+@keyframes dlg-fade-in{from{opacity:0}}
+@keyframes dlg-fade-out{to{opacity:0}}
+dialog[open]{animation:dlg-in .24s cubic-bezier(.22,1,.36,1)}
+dialog[open]::backdrop{animation:dlg-fade-in .24s ease-out}
+dialog.closing{animation:dlg-out .19s cubic-bezier(.4,0,1,1) forwards}
+dialog.closing::backdrop{animation:dlg-fade-out .19s ease-in forwards}
+.image-dialog[open]{animation-name:dlg-fade-in}.image-dialog.closing{animation-name:dlg-fade-out}
+@media(prefers-reduced-motion:reduce){dialog[open],dialog.closing,dialog[open]::backdrop,dialog.closing::backdrop{animation:none}}
+
+/* ===== Compact header (scrolled) + active search ===== */
+#site-header .header-main,#site-header .nav-row,#site-header .brand>img,#site-header .search{transition:padding .25s ease,max-height .25s ease,opacity .2s ease,width .25s ease}
+.compact-cats{display:none;align-items:center;gap:8px;height:42px;padding:0 14px;border:1px solid #e2e5ea;border-radius:10px;background:#fff;font:inherit;font-size:13px;font-weight:700;color:#1e2430;cursor:pointer;white-space:nowrap}
+.compact-cats svg{width:18px;height:18px;fill:currentColor}
+.compact-cats:hover{background:#f4f5f7}
+@media(min-width:768px){
+.nav-row{max-height:80px}
+.header-scrolled #site-header .header-main{padding-block:10px}
+.header-scrolled #site-header .brand>img{width:118px}
+.header-scrolled #site-header .nav-row{max-height:0;padding-block:0;opacity:0;overflow:hidden;pointer-events:none}
+.header-scrolled .compact-cats{display:inline-flex}
+.header-scrolled #site-header .search input{min-height:40px}
+}
+.search{position:relative}
+.search.is-active{background:#fff;border-color:#2546f5!important;border-radius:12px 12px 0 0}
+.search-panel{display:none;position:absolute;inset:100% -1px auto;z-index:60;padding:14px 16px 16px;border:1px solid #2546f5;border-top:1px solid #e2e5ea;border-radius:0 0 12px 12px;background:#fff;box-shadow:0 18px 32px -18px #1e243040;text-align:start}
+.search.is-active .search-panel{display:block;animation:sp-in .18s ease-out}
+@keyframes sp-in{from{opacity:0;transform:translateY(-4px)}}
+.sp-head{display:flex;align-items:center;justify-content:space-between;margin:4px 0 10px;font-size:12px;color:#5f6878}
+.sp-head b{font-weight:800;color:#1e2430}
+.sp-head button{padding:0;border:0;background:none;font:inherit;font-size:12px;font-weight:700;color:#c62f48;cursor:pointer}
+.sp-recent{display:grid;margin-bottom:12px}
+.sp-recent button{display:flex;align-items:center;gap:10px;min-height:40px;padding:0 6px;border:0;border-radius:8px;background:none;font:inherit;font-size:13px;color:#262b38;text-align:start;cursor:pointer}
+.sp-recent button:hover{background:#f4f5f7}
+.sp-recent button span{flex:1}
+.sp-recent svg{width:16px;height:16px;fill:#8b93a1}
+.sp-chips{display:flex;flex-wrap:wrap;gap:8px}
+.sp-chips button{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border:1px solid #e2e5ea;border-radius:999px;background:#fff;font:inherit;font-size:12px;font-weight:600;color:#262b38;cursor:pointer}
+.sp-chips button:hover{border-color:#2546f5;color:#2546f5}
+.sp-chips svg{width:14px;height:14px;fill:currentColor}
+body.search-open::after{content:"";position:fixed;inset:0;z-index:20;background:#1e243026;animation:sp-in .18s ease-out;pointer-events:none}
+@media(prefers-reduced-motion:reduce){#site-header *{transition:none!important}.search-panel,body.search-open::after{animation:none!important}}
+
+/* ===== One quantity control everywhere: [ + | n | − ] — minus becomes a red trash at 1 ===== */
+.qty-control{display:inline-flex!important;align-items:center;gap:2px;height:42px;padding:3px!important;border:1px solid #d6dae1!important;border-radius:12px!important;background:#fff!important;box-shadow:none!important}
+.qty-control>button{display:grid!important;place-items:center;width:34px!important;height:34px!important;min-width:0!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;border-radius:9px!important;background:none!important;color:#1e2430!important;cursor:pointer;transition:background-color .15s,color .15s}
+.qty-control>button:hover:not(:disabled){background:#f1f3f7!important}
+.qty-control>button:disabled{opacity:.35;cursor:not-allowed}
+.qty-control>button svg{width:17px!important;height:17px!important;fill:currentColor}
+.qty-control>button:first-child{color:#2546f5!important}
+.qty-control>:is(span,output){min-width:30px;text-align:center;font-size:15px;font-weight:800;color:#1e2430;line-height:1}
+.qty-control>button.remove,.qty-control>button.danger,.qty-control>button[aria-label^="حذف"]{color:#d1364f!important}
+.qty-control>button.remove:hover,.qty-control>button.danger:hover,.qty-control>button[aria-label^="حذف"]:hover{background:#fdecef!important}
+.qty-control[hidden]{display:none!important}
+
+/* Product page: gallery stays in view while the details column scrolls */
+@media(min-width:1024px){.product>.gallery{position:sticky;top:calc(var(--sticky-height,140px) + 24px);align-self:start}}
+/* Collapsed header: every control exactly 44px tall, even vertical padding (12px desktop / 8px mobile) */
+.header-scrolled #site-header .header-main{align-items:center}
+.header-scrolled #site-header :is(.compact-cats,#account-button,#open-cart,.mobile-menu){height:44px!important;min-height:44px!important;margin-block:0!important}
+.header-scrolled #site-header .search{height:44px!important;min-height:0!important;box-sizing:border-box}
+.header-scrolled #site-header .search input{height:100%!important;min-height:0!important;padding-block:0!important}
+.header-scrolled #site-header .search>button{height:42px;min-height:0}
+@media(min-width:768px){.header-scrolled #site-header .header-main{padding-block:18px 12px!important}}
+@media(max-width:767px){.header-scrolled #site-header .header-main{padding-block:16px!important}.header-scrolled #site-header :is(.mobile-menu,#open-cart){width:44px!important}}

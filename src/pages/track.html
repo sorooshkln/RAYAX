@@ -1,0 +1,15 @@
+<main class="container track-page" id="track">
+<header class="track-head"><span class="track-eyebrow"><i aria-hidden="true"></i>پیگیری سفارش</span><h1>سفارش شما در چه مرحله‌ای است؟</h1><p>کد سفارش را وارد کنید تا وضعیت و اقلام سفارش را ببینید.</p></header>
+<form class="track-ticket track-form" id="track-form" novalidate>
+<div class="track-band" aria-hidden="true"></div>
+<div class="track-form-body">
+<label for="track-code">کد سفارش</label>
+<div class="track-field"><input id="track-code" name="code" dir="ltr" autocomplete="off" placeholder="RX-1234567" aria-describedby="track-error track-hint" maxlength="14"><button class="track-btn" id="track-submit" type="submit">پیگیری</button></div>
+<p class="track-error" id="track-error" role="alert" hidden><svg aria-hidden="true"><use href="#i-warning"/></svg><span></span></p>
+<p class="track-hint" id="track-hint">کد سفارش در پیامک ثبت سفارش برای شما ارسال شده است.</p>
+</div>
+<div class="track-cut" aria-hidden="true"></div>
+<div class="track-recent"><span>سفارش‌های اخیر:</span><div id="track-recent-list"><button type="button" class="track-chip" data-track-sample dir="ltr">RX-1234567</button></div></div>
+</form>
+<section class="track-result" id="track-result" aria-live="polite" tabindex="-1" hidden></section>
+</main>

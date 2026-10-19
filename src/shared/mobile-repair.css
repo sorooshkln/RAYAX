@@ -176,3 +176,65 @@ main:has(#product-name)>.benefits{display:none}.product-editorial{position:relat
 .mobile-buy{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:10px 16px}.mobile-buy>.mobile-quantity{grid-column:1;grid-row:1;width:132px;height:44px;justify-content:space-between;padding:3px;direction:ltr}.mobile-buy>.mobile-quantity button{width:36px;height:36px;min-width:36px;min-height:36px;padding:8px}.mobile-buy>.mobile-quantity [data-mobile-quantity=plus]{order:3}.mobile-buy>.mobile-quantity span{order:2;font-size:14px}.mobile-buy>.mobile-quantity [data-mobile-quantity=minus]{order:1}.mobile-buy>.mobile-price-block{grid-column:2;grid-row:1;min-width:0;justify-self:end}.mobile-buy>.add-to-cart{grid-column:1;grid-row:1;width:100%;min-width:0;font-size:12px}.mobile-buy .mobile-price-block strong{font-size:17px}
 main:has(#product-name) .details-section{margin-top:32px;border-top:0}main:has(#product-name) .tabs{border-top:0}
 }
+
+/* Sticky state on mobile: the Snapp Pay banner slides away, the header keeps a #ededed bottom border. */
+@media (max-width: 767px) {
+  #site-header { transition: transform .25s ease; }
+  .header-scrolled #site-header { transform: translateY(calc(-1 * var(--announce-h, 36px))); border-bottom-color: #ededed; box-shadow: none; }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) { #site-header { transition: none; } }
+
+/* Mobile tab bar + support sheet */
+.tabbar{display:none}
+@media (max-width: 767px) {
+  .tabbar { position: fixed; inset: auto 0 0; z-index: 45; display: grid; grid-template-columns: repeat(4, 1fr); padding: 6px 4px calc(6px + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid #e2e5ea; }
+  .tabbar button { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 52px; padding: 4px 0 0; border: 0; background: none; font-family: inherit; font-size: 12px; font-weight: 600; line-height: 1.4; color: #5f6878; }
+  .tabbar button > span { position: relative; display: grid; place-items: center; }
+  .tabbar svg { width: 22px; height: 22px; fill: currentColor; }
+  .tabbar .active { color: #2546f5; font-weight: 800; }
+  .tabbar .active::before { content: ""; position: absolute; top: -7px; width: 28px; height: 3px; border-radius: 0 0 3px 3px; background: #2546f5; }
+  .tabbar-count { position: absolute; top: -6px; left: -10px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 999px; background: #e5484d; color: #fff; font-size: 12px; line-height: 18px; text-align: center; }
+  body.has-tabbar { padding-bottom: calc(66px + env(safe-area-inset-bottom)); }
+  body.has-tabbar .account-btn { display: none; }
+  .support-sheet .dialog-heading h2 { margin: 0; font-size: 17px; font-weight: 800; color: #1e2430; }
+  .support-sheet .dialog-heading h2 span { color: #2546f5; }
+  .support-links { display: grid; gap: 10px; }
+  .support-links a { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 14px; border-radius: 12px; background: #f4f5f7; font-size: 14px; font-weight: 600; color: #262b38; text-decoration: none; }
+  .support-links a span { flex: 1; }
+  .support-links svg { width: 22px; height: 22px; fill: currentColor; }
+  .support-links a > svg:last-child { width: 15px; height: 15px; color: #8b93a1; }
+  .support-links .wa > svg:first-child { color: #1faa53; }
+  .support-links .tel > svg:first-child { color: #2546f5; }
+  .support-links .faq > svg:first-child { color: #7048e8; }
+}
+
+/* Mobile bottom sheets slide up / down */
+@keyframes sheet-in{from{transform:translateY(100%)}}
+@keyframes sheet-out{to{transform:translateY(100%)}}
+@media (max-width: 767px) {
+  dialog[open]:not(.image-dialog):not(.mobile-navigation) { animation: sheet-in .3s cubic-bezier(.22,1,.36,1); }
+  dialog.closing:not(.image-dialog):not(.mobile-navigation) { animation: sheet-out .2s cubic-bezier(.4,0,1,1) forwards; }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) { dialog[open], dialog.closing { animation: none !important; } }
+
+/* Compact mobile header when scrolled: tighter rows, smaller logo, search kept */
+@media (max-width: 767px) {
+  .header-scrolled #site-header .header-main { grid-template-columns: 44px auto minmax(0, 1fr) auto; align-items: center; padding-block: 8px; column-gap: 8px; row-gap: 0; }
+  .header-scrolled #site-header .mobile-menu { grid-column: 1; grid-row: 1; }
+  .header-scrolled #site-header .brand { grid-column: 2; grid-row: 1; }
+  .header-scrolled #site-header .search { grid-column: 3; grid-row: 1; width: auto; min-width: 0; }
+  .header-scrolled #site-header .header-actions { grid-column: 4; grid-row: 1; }
+  .header-scrolled #site-header .brand > img { width: 86px; }
+  .header-scrolled #site-header .search input { min-height: 40px; font-size: 13px; }
+  .header-scrolled #site-header .search.is-active { position: static; }
+  .header-scrolled #site-header .search.is-active .search-panel { inset: 100% 0 auto; border-radius: 0 0 12px 12px; }
+  .search-panel { border-radius: 0 0 12px 12px; }
+}
+
+/* Mobile header search: 44px tall, 13px text */
+@media (max-width: 767px) {
+  #site-header .search { height: 44px; min-height: 0; }
+  #site-header .search input { height: 100%; min-height: 0 !important; padding-block: 0; font-size: 13px !important; }
+  #site-header .search > button { height: 42px; min-height: 0; }
+}
+@media (max-width: 767px) { .header-scrolled #site-header .header-actions { display: flex; gap: 8px; } .header-scrolled #site-header .account-btn { width: 44px !important; height: 44px !important; } }

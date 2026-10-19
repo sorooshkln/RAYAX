@@ -17,7 +17,8 @@
       "scripts/10-site-links.js"
     ],
     "styles": [
-      "shared/product-cards.css"
+      "shared/product-cards.css",
+      "shared/product-refinements.css"
     ]
   },
   "home": {
@@ -139,6 +140,38 @@
     "styles": [
       "shared/catalog-cards.css",
       "shared/checkout.css"
+    ]
+  },
+  "track": {
+    "title": "پیگیری سفارش | رایاکس",
+    "content": "pages/track.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js",
+      "scripts/19-track.js"
+    ],
+    "styles": [
+      "shared/track.css"
+    ]
+  },
+  "account": {
+    "title": "حساب کاربری من | رایاکس",
+    "content": "pages/account.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js",
+      "scripts/19-account-panel.js"
+    ],
+    "styles": [
+      "shared/account.css"
     ]
   }
 }

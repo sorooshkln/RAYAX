@@ -120,7 +120,7 @@
 :is(.ck-page,.ck-dialog) .ck-field textarea{padding:10px 12px;line-height:1.9;resize:vertical}
 :is(.ck-page,.ck-dialog) .ck-field select{appearance:none;padding-inline-end:12px;padding-inline-start:36px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='%23666565'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E") no-repeat left 12px center/16px}
 :is(.ck-page,.ck-dialog) .ck-field :is(input,select,textarea):hover{border-color:var(--ck-control)}
-:is(.ck-page,.ck-dialog) .ck-field :is(input,select,textarea):focus{outline:0;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
+:is(.ck-page,.ck-dialog) .ck-field :is(input,select,textarea):focus{outline:0;border-color:var(--primary);box-shadow:none}
 :is(.ck-page,.ck-dialog) [aria-invalid]{border-color:var(--ck-danger)!important;box-shadow:0 0 0 3px var(--ck-danger-soft)!important}
 .ck-field input::placeholder,.ck-field textarea::placeholder{color:#a7adb5}
 .ck-birth-row{display:grid;grid-template-columns:.8fr 1.3fr 1fr;gap:8px}
@@ -745,3 +745,147 @@ label:has(input:checked) .ck-radio:after{transform:scale(1)}
 .ck-sum-note{margin-top:14px!important}
 }
 @media(max-width:767px){.ck-receipt-cut:before,.ck-receipt-cut:after{background:#fff}}
+
+/* Wallet credit (payment step) */
+.ck-wallet{padding:0!important}
+.ck-wallet-row{display:flex;align-items:center;gap:14px;width:100%;padding:18px 20px;border:0;background:none;font:inherit;text-align:start;color:inherit;cursor:pointer}
+.ck-wallet-row .ck-tile{flex:none}
+.ck-wallet-text{flex:1;min-width:0;display:grid;gap:4px}
+.ck-wallet-text b{font-size:15px;font-weight:700;color:var(--ink,#1e2430)}
+.ck-wallet-text small{font-size:13px;color:#5f6878}
+.ck-wallet-row em{font-style:normal;font-weight:700;color:var(--success)}
+.ck-toggle{position:relative;flex:none;width:44px;height:26px;border-radius:999px;background:#d6dae1;transition:background-color .2s}
+.ck-toggle::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s}
+.ck-wallet-row[aria-checked=true] .ck-toggle{background:var(--primary)}
+.ck-wallet-row[aria-checked=true] .ck-toggle::after{transform:translateX(-18px)}
+.ck-panel.ck-disabled .ck-pays{opacity:.45;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.ck-toggle,.ck-toggle::after{transition:none}}
+/* Field standard: border-only focus everywhere in checkout */
+:is(.ck-page,.ck-dialog) :is(input:not([type=checkbox]):not([type=radio]),select,textarea):focus{outline:0;border-color:var(--primary)!important;box-shadow:none!important}
+
+/* ===== Checkout design layer (2026-10-20): same language as the account panel — flat white cards on a soft canvas,
+   hairline borders, square-bullet section titles, one blue action. Scoped by #ck-page so it wins over earlier layers. ===== */
+body:has(#ck-page){background:#f6f7f9}
+#ck-page{--ck-navy:#1e2430;--ck-ink:#262b38;--ck-mute:#5f6878;--ck-line:#e2e5ea;--ck-ctl:#d6dae1;max-width:1180px;color:var(--ck-ink)}
+#ck-page .ck-panel{padding:24px;border:1px solid var(--ck-line);border-radius:18px;background:#fff;box-shadow:none}
+#ck-page .ck-main{display:grid;gap:16px;align-content:start}
+#ck-page .ck-main.ck-panel{display:block}
+#ck-page .ck-sec-head{margin-bottom:18px;padding:0;border:0}
+#ck-page .ck-sec-head h2{display:flex;align-items:center;gap:10px;margin:0;font-size:16px;font-weight:800;color:var(--ck-navy)}
+#ck-page .ck-sec-head:not(.rich) h2::before{content:"";flex:none;width:7px;height:7px;border-radius:2px;background:#2546f5}
+#ck-page .ck-sec-head .ck-sec-icon{display:none}
+#ck-page .ck-sec-tile{background:#f4f5f7;color:var(--ck-navy)}
+#ck-page .ck-count{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#eef1ff;color:#2546f5;font-size:12px;font-weight:800}
+/* Steps: segment bars like the account timeline */
+#ck-top{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:28px 0 20px}
+#ck-top h1{margin:0;font-size:22px;font-weight:800;color:var(--ck-navy)}
+#ck-page .ck-steps{display:grid;grid-template-columns:repeat(3,120px);gap:8px;margin:0;padding:0;list-style:none}
+#ck-page .ck-steps li{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:8px;font-size:13px;font-weight:600;color:#8b93a1}
+#ck-page .ck-steps li::after{display:none!important}
+#ck-page .ck-steps li::before{content:""!important;display:block!important;position:static!important;width:100%!important;flex:none!important;height:6px!important;margin:0!important;border:0!important;border-radius:6px!important;transform:none!important;background:repeating-linear-gradient(-45deg,#dfe2e7 0 2px,transparent 2px 7px),#eef0f3!important}
+#ck-page .ck-steps li.done::before{background:var(--ck-navy)!important}
+#ck-page .ck-steps li.current::before{background:#2546f5!important}
+#ck-page .ck-steps .ck-dot{display:none!important}
+#ck-page .ck-steps li.done button{display:block;padding:0;border:0;background:none;font:inherit;color:var(--ck-ink);text-align:start;cursor:pointer}
+#ck-page .ck-steps li.current{color:#2546f5;font-weight:800}
+#ck-page .ck-steps li>span:not(.ck-dot){display:block}
+/* Items */
+#ck-page .ck-items{margin:0;padding:0;list-style:none}
+#ck-page .ck-item{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:18px;align-items:center;padding:18px 0;border:0;border-top:1px solid var(--ck-line)}
+#ck-page .ck-item:first-child{padding-top:0;border-top:0}
+#ck-page .ck-item:last-child{padding-bottom:0}
+#ck-page .ck-item-media{width:96px;height:96px;padding:8px;border:1px solid var(--ck-line);border-radius:16px;background:#fff}
+#ck-page .ck-item-media img{width:100%;height:100%;object-fit:contain}
+#ck-page .ck-item-body h3{margin:0 0 8px;font-size:15px;font-weight:700;line-height:1.8;color:var(--ck-navy)}
+#ck-page .ck-attrs,#ck-page .ck-item-meta{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding:0;list-style:none;font-size:13px;color:var(--ck-mute)}
+#ck-page .ck-attrs b{font-weight:700;color:var(--ck-ink)}
+#ck-page .ck-item-meta{margin-top:6px;font-size:12px}
+#ck-page .ck-item-meta svg{width:15px;height:15px}
+#ck-page .ck-item-end{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+#ck-page .ck-was{display:flex;align-items:center;gap:6px;margin:0;font-size:12px;color:#8b93a1}
+#ck-page .ck-off{padding:1px 6px;border-radius:6px;background:#fdecef;color:#c62f48;font-size:12px;font-weight:800}
+#ck-page .ck-now{margin:0;font-size:17px;font-weight:800;color:var(--ck-navy)}
+#ck-page .ck-now small{font-size:12px;font-weight:500;color:var(--ck-mute)}
+#ck-page .ck-qty{display:inline-flex;align-items:center;height:42px;padding:0 2px;border:1px solid var(--ck-ctl);border-radius:12px;background:#fff}
+#ck-page .ck-qty button{display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:10px;background:none;color:var(--ck-navy)}
+#ck-page .ck-qty button:hover{background:#f4f5f7}
+#ck-page .ck-qty button svg{width:17px;height:17px}
+#ck-page .ck-qty [data-d="-1"]:only-of-type,#ck-page .ck-qty .danger{color:#c62f48}
+#ck-page .ck-qty output,#ck-page .ck-qty span{min-width:28px;text-align:center;font-size:15px;font-weight:800}
+/* Summary */
+#ck-page .ck-aside{position:sticky;top:24px}
+#ck-page .ck-rows{display:grid;gap:12px;margin:0}
+#ck-page .ck-rows>div{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px}
+#ck-page .ck-rows dt{display:flex;align-items:center;gap:8px;color:var(--ck-mute)}
+#ck-page .ck-rows dt svg{width:17px;height:17px}
+#ck-page .ck-rows dd{margin:0;font-weight:700;color:var(--ck-ink)}
+#ck-page .ck-rows .save dd,#ck-page .ck-rows .save dt{color:#11804a}
+#ck-page .ck-total{display:flex;justify-content:space-between;align-items:center;margin:16px 0 0;padding-top:16px;border-top:1px dashed var(--ck-line)}
+#ck-page .ck-total span{font-size:14px;font-weight:700;color:var(--ck-navy)}
+#ck-page .ck-total p{margin:0}
+#ck-page .ck-total b{font-size:21px;font-weight:800;color:var(--ck-navy)}
+#ck-page .ck-perk{display:flex;align-items:center;gap:10px;margin:16px 0 0;padding:12px;border-radius:12px;background:#f6f7f9;font-size:13px;color:var(--ck-mute)}
+#ck-page .ck-perk b{color:var(--ck-navy)}
+#ck-page .ck-sum-note{display:flex;align-items:center;justify-content:center;gap:6px;margin:12px 0 0;font-size:12px;color:var(--ck-mute)}
+#ck-page .ck-sum-note svg{width:15px;height:15px}
+#ck-page .ck-btn{min-height:48px;border-radius:12px;font-weight:800;box-shadow:none}
+#ck-page .ck-btn.primary{background:#2546f5;color:#fff}
+#ck-page .ck-btn.primary:hover{background:#1c3ae0}
+#ck-page .ck-btn.lg{min-height:52px;border-radius:14px;font-size:15px}
+#ck-page .ck-btn.ghost,#ck-page .ck-btn.secondary{border:1px solid var(--ck-ctl);background:#fff;color:var(--ck-ink)}
+/* Choice cards (address, shipping, days, payment) share one selected style */
+#ck-page :is(.ck-address,.ck-ship-card,.ck-pay){border:1px solid var(--ck-ctl);border-radius:14px;background:#fff;box-shadow:none}
+#ck-page :is(.ck-address,.ck-ship-card,.ck-pay):has(input:checked){border-color:var(--ck-navy);background:#fafbfc}
+#ck-page .ck-address-main{padding:16px 18px!important}
+#ck-page .ck-address-actions{padding:0 18px 14px!important}
+@media(max-width:767px){#ck-page .ck-ship-card,#ck-page .ck-pay{padding:14px 16px!important;gap:10px}}
+#ck-page .ck-day{border:0!important;background:none!important}
+#ck-page .ck-notice{border:1px solid var(--ck-line);border-radius:14px;background:#fff}
+@media(min-width:1024px){
+#ck-page .ck-grid{grid-template-columns:minmax(0,1fr) 360px;gap:24px}
+}
+@media(max-width:1023px){
+#ck-page .ck-aside{position:static}
+}
+@media(max-width:767px){
+body:has(#ck-page){background:#fff}
+#ck-top{flex-direction:column;align-items:stretch;gap:14px;margin:16px 0 8px}
+#ck-top h1{font-size:18px}
+#ck-page .ck-steps{grid-template-columns:repeat(3,1fr)}
+#ck-page .ck-steps li{font-size:12px}
+#ck-page .ck-panel{padding:20px 16px;border:0;border-bottom:8px solid #f4f5f7;border-radius:0}
+#ck-page .ck-main{gap:0}
+#ck-page .ck-item{grid-template-columns:76px minmax(0,1fr);gap:14px;align-items:start}
+#ck-page .ck-item-media{width:76px;height:76px;border-radius:14px}
+#ck-page .ck-item-body h3{font-size:14px}
+#ck-page .ck-item-end{grid-column:1/-1;flex-direction:row-reverse;align-items:center;justify-content:space-between}
+#ck-page .ck-now{font-size:16px}
+#ck-page .ck-total b{font-size:18px}
+#ck-page .ck-cta{box-shadow:none;border-top:1px solid var(--ck-line)}
+}
+
+.ck-wallet-row.is-empty{cursor:default}
+.ck-wallet-row.is-empty .ck-link{flex:none;font-weight:800;color:#2546f5;text-decoration:none}
+#ck-page .ck-perk .ck-tile.sm{display:grid;place-items:center;flex:none;width:36px;height:22px;border-radius:6px;background:#eef1ff;color:#2546f5}
+#ck-page .ck-perk .ck-tile.sm svg{width:15px;height:15px}
+#ck-page .ck-perk+.ck-perk{margin-top:8px}
+
+/* No page title under the checkout header (kept for screen readers) */
+#ck-top .ck-top-title{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#ck-top{justify-content:center}
+#ck-page .ck-steps{grid-template-columns:repeat(3,minmax(0,180px));justify-content:center;width:100%}
+/* Steps: centred labels under each bar, spacing on the 8px grid */
+#ck-page .ck-steps li{align-items:center!important;text-align:center}
+#ck-page .ck-steps li::before{align-self:stretch}
+#ck-page .ck-steps li.done button{text-align:center}
+@media(max-width:767px){
+#ck-top{margin:16px 0 8px!important;padding:0 16px!important}
+#ck-page .ck-steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%}
+#ck-page .ck-steps li{gap:8px;font-size:12px;line-height:1.6}
+}
+/* Header back button: borderless, sitting right before the "سبد خرید" title */
+.ck-head-back{order:0;width:auto!important;height:40px;margin:0!important;margin-inline-end:-4px!important;padding:0 4px!important;border:0!important;border-radius:8px;background:none}
+.ck-head-back:hover{background:var(--canvas)}
+.ck-head-back svg{width:20px;height:20px}
+.ck-head-title{order:0!important;margin-inline-start:0!important}
+.ck-head-logo{order:0!important;margin-inline-start:auto!important}

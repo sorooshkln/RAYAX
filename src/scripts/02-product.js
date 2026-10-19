@@ -9,8 +9,8 @@ function updateConfig(){const c=configs[selectedConfig];$('#color-name').textCon
 $$('.color-option').forEach(b=>b.addEventListener('click',()=>{selectedColor=b.dataset.color;$$('.color-option').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',x===b)});updateConfig()}));
 $$('[data-config]').forEach(b=>b.addEventListener('click',()=>{selectedConfig=Number(b.dataset.config);$$('[data-config]').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',x===b)});updateConfig()}));
 let favorite=read('rayax-favorite-v1',false)===true;
-function paintFavorite(){$('#favorite').setAttribute('aria-pressed',favorite);$('#favorite').setAttribute('aria-label',favorite?'حذف از علاقه‌مندی‌ها':'افزودن به علاقه‌مندی‌ها')}
-paintFavorite();$('#favorite').addEventListener('click',()=>{favorite=!favorite;save('rayax-favorite-v1',favorite);paintFavorite();toast(favorite?'به علاقه‌مندی‌های شما اضافه شد.':'از علاقه‌مندی‌ها حذف شد.')});
+function paintFavorite(){$('#favorite').setAttribute('aria-pressed',favorite);$('#favorite use').setAttribute('href',favorite?'#i-heart-fill':'#i-heart');$('#favorite').setAttribute('aria-label',favorite?'حذف از علاقه‌مندی‌ها':'افزودن به علاقه‌مندی‌ها')}
+paintFavorite();$('#favorite').addEventListener('click',()=>{favorite=!favorite;save('rayax-favorite-v1',favorite);paintFavorite();$('#favorite').classList.toggle('pop',favorite);toast(favorite?'به علاقه‌مندی‌های شما اضافه شد.':'از علاقه‌مندی‌ها حذف شد.')});
 $('#share').addEventListener('click',async()=>{try{if(navigator.share&&location.protocol!=='file:')await navigator.share({title:document.title,url:location.href});else if(navigator.clipboard&&location.protocol!=='file:'){await navigator.clipboard.writeText(location.href);toast('لینک محصول کپی شد.')}else info('اشتراک‌گذاری محصول','<p>نشانی صفحه را انتخاب و کپی کنید:</p><input aria-label="نشانی محصول" dir="ltr" readonly value="'+escapeHTML(location.href)+'">')}catch(e){if(e.name!=='AbortError')info('اشتراک‌گذاری محصول','<p>نشانی صفحه را از نوار آدرس مرورگر کپی کنید.</p>')}});
 const tabs=$$('[role=tab]');
 function activateTab(id,scroll=false,focus=false){tabs.forEach(t=>{const active=t.getAttribute('aria-controls')===id;t.setAttribute('aria-selected',active);t.tabIndex=active?0:-1;$('#'+t.getAttribute('aria-controls')).hidden=!active;if(active&&focus)t.focus()});if(scroll)$('#details').scrollIntoView({behavior:'smooth',block:'start'})}
@@ -28,3 +28,10 @@ updateProductOffer();setInterval(updateProductOffer,1000);
 
 // Snapp Pay installment preview: 4 equal monthly parts, first one today. Prototype figures only.
 $('#snapp-offer').addEventListener('click',()=>{const total=configs[selectedConfig].price,part=Math.ceil(total/4),labels=['امروز، هنگام خرید','یک ماه بعد','دو ماه بعد','سه ماه بعد'];info('خرید اقساطی با اسنپ‌پی',`<div class="snapp-plan"><div class="snapp-plan-head"><span class="snapp-offer-logo"><img src="${asset('snapp-pay.png')}" alt="Snapp! Pay" width="34" height="21"></span><p><b>${money(total)}</b> در ۴ قسط مساوی</p></div><ol>${labels.map((l,i)=>`<li><span class="snapp-step">${fa(i+1)}</span><span>${l}</span><b>${money(part)}</b></li>`).join('')}</ol><p class="muted">روش پرداخت اسنپ‌پی را در مرحله پرداخت سبد خرید انتخاب کنید.</p></div>`)});
+
+
+// Savings line under the price, kept in sync with the selected configuration
+{const row=$('.buy-card .price-row');if(row){const save=document.createElement('p');save.className='buy-save';save.id='buy-save';row.append(save);
+ const num=id=>+String($(id)?.textContent||'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/\D/g,'');
+ const paint=()=>{const d=num('#old-price')-num('#price');save.hidden=!(d>0);save.innerHTML=d>0?`<small>${icon('tag')}سود شما از این خرید</small><b>${fa(d)} <span>تومان</span></b>`:''};
+ new MutationObserver(paint).observe($('#price'),{childList:true,characterData:true,subtree:true});paint()}}

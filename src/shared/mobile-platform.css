@@ -1,0 +1,45 @@
+/* Last shared layer, after page CSS: keep mobile modal safe areas opaque. */
+@media (max-width: 767px), (hover: none) and (pointer: coarse) {
+  html.mobile-modal-open { overflow: hidden; overscroll-behavior: none; background: #fff; }
+  html.mobile-modal-open body {
+    position: fixed;
+    top: var(--modal-scroll-top, 0px);
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+    background: #fff;
+  }
+  html.mobile-modal-open dialog[open] {
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  html.mobile-modal-open dialog[open]::backdrop {
+    bottom: -100px;
+    background-image: linear-gradient(to top, #fff 0 calc(100px + env(safe-area-inset-bottom, 0px)), transparent calc(100px + env(safe-area-inset-bottom, 0px)));
+  }
+  html.mobile-modal-open :is(dialog[open], #image-dialog[open])::after {
+    content: '';
+    display: block;
+    position: fixed;
+    inset: auto 0 -100px;
+    width: auto;
+    height: calc(100px + env(safe-area-inset-bottom, 0px));
+    background: #fff;
+    border: 0;
+    border-radius: 0;
+    transform: none;
+    opacity: 1;
+    z-index: 2147483647;
+    pointer-events: none;
+  }
+  /* Safari focus zoom is prevented by the field's actual font size.
+     Pinch zoom stays available; placeholders keep their approved styling. */
+  input:not([type='hidden']):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']):not([type='file']):not([type='button']):not([type='submit']):not([type='reset']),
+  textarea,
+  select,
+  [contenteditable='true'],
+  [contenteditable='plaintext-only'] { font-size: 16px !important; }
+  .ck-otp input, .auth-otp input { font-size: 24px !important; }
+}

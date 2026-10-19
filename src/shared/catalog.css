@@ -231,3 +231,44 @@ body.plp-filter-open{overflow:hidden}
 .plp-unit{font-size:12px;font-weight:400;color:#8393a2}
 .plp-price-inputs label span{flex:none}
 @media(max-width:1023px){.plp-filter-body{scrollbar-width:none}.plp-filter-body::-webkit-scrollbar{display:none}}
+
+/* v2: header spacing, brands "more" dialog, use-case chips */
+.plp-head{padding-bottom:20px}
+.plp-brand-more{flex:0 0 112px;display:flex;flex-direction:column;gap:0;border-style:dashed;line-height:1.5}
+.plp-brand-more b{font-size:15px;font-weight:800;color:var(--primary)}
+.plp-brand-more span{font-size:12px;color:var(--muted);letter-spacing:0;font-weight:500}
+.plp-brand-more:hover{border-color:var(--primary)}
+.plp-brands-dialog{width:min(520px,calc(100% - 32px))}
+.plp-brands-all{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;max-height:min(56dvh,420px);overflow-y:auto;margin-bottom:16px;padding:2px}
+.plp-brand-row{display:flex;align-items:center;gap:10px;min-height:48px;padding:0 10px;border-radius:10px;font-size:14px;text-align:right;transition:background-color .15s}
+.plp-brand-row:hover{background:var(--plp-soft)}
+.plp-brand-row span:nth-child(2){flex:1;font-weight:600}
+.plp-brand-row small{font-size:12px;color:#8393a2}
+.plp-brand-row .plp-check svg{opacity:0}
+.plp-brand-row[aria-pressed="true"] .plp-check{background:var(--primary);border-color:var(--primary)}
+.plp-brand-row[aria-pressed="true"] .plp-check svg{opacity:1}
+.plp-use{display:flex;align-items:center;gap:12px;margin:-12px 0 24px}
+.plp-use h2{flex:none;font-size:13px;font-weight:700;color:var(--text)}
+.plp-use-list{display:flex;gap:8px;overflow-x:auto;padding:2px;scrollbar-width:none}
+.plp-use-list::-webkit-scrollbar{display:none}
+.plp-use-chip{flex:none;min-height:38px;padding:0 16px;border:1px solid var(--plp-line);border-radius:999px;background:#fff;font-size:13px;font-weight:600;transition:border-color .2s,background-color .2s}
+.plp-use-chip:hover{border-color:var(--plp-control)}
+.plp-use-chip[aria-pressed="true"]{border-color:var(--primary);background:var(--primary-soft);color:var(--primary-pressed)}
+@media(max-width:767px){.plp-head{padding-bottom:16px}.plp-brand-more{flex-basis:96px}.plp-brands-all{grid-template-columns:1fr}.plp-use{margin:-4px -16px 12px;padding-inline:16px}.plp-use h2{font-size:12px}}
+.plp-brands-dialog .plp-check{display:grid;place-items:center;flex:none;width:18px;height:18px;border:1.5px solid var(--plp-control);border-radius:5px;background:#fff;color:#fff}
+.plp-brands-dialog .plp-check svg{width:12px;height:12px;fill:currentColor}
+.plp-brands-dialog :is(h2,p){margin:0}
+@media(max-width:1023px){.header-scrolled .plp-toolbar{top:calc(var(--sticky-height,0px) - var(--announce-h,0px))}}
+
+/* Use-case lives in the filter panel (no chip strip); on mobile/tablet categories and brands move into the filter sheet too */
+.plp-use{display:none!important}
+.plp-sheet-only{display:none}
+.plp-cat-options{display:flex;flex-wrap:wrap;gap:8px}
+.plp-cat-option{min-height:38px;padding:0 14px;border:1px solid #d6dae1;border-radius:999px;background:#fff;font:inherit;font-size:13px;font-weight:600;color:#262b38;cursor:pointer}
+.plp-cat-option[aria-pressed=true]{border-color:#1e2430;background:#1e2430;color:#fff}
+@media(max-width:1023px){
+.plp-cats,.plp-brands-wrap{display:none!important}
+.plp-sheet-only{display:block;order:-1}
+.plp-filter-body{display:flex;flex-direction:column}
+#plp-facets{display:contents}
+}

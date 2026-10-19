@@ -107,10 +107,13 @@ function plpWriteURL(){
 function plpBuildCats(){
  $('#plp-cats').innerHTML=plpCats.map(c=>{const n=c.id==='all'?plpProducts.length:plpProducts.filter(p=>p.cat===c.id).length;return `<button type="button" class="plp-cat" data-plp-cat="${c.id}" aria-pressed="false"><span class="plp-cat-img">${c.img?`<img src="${asset('home/design/'+c.img+'.png')}" alt="">`:icon('box')}</span><span class="plp-cat-text"><b>${c.label}</b><small>${fa(n)} کالا</small></span></button>`}).join('');
 }
+const plpBrandsShown=8;
+function plpBrandBtn(b){return `<button type="button" class="plp-brand" data-plp-brand="${escapeHTML(b)}" aria-pressed="false" title="${escapeHTML(b)}">${plpLogos[b]?`<img src="${asset('home/design/brand-'+plpLogos[b]+'.png')}" alt="${escapeHTML(b)}">`:`<span>${escapeHTML(b)}</span>`}<i aria-hidden="true">${icon('check')}</i></button>`}
 function plpBuildBrands(){
  const counts={};plpInCat().forEach(p=>counts[p.brand]=(counts[p.brand]||0)+1);
  const brands=Object.keys(counts).sort((a,b)=>(!!plpLogos[b]-!!plpLogos[a])||(counts[b]-counts[a]));
- $('#plp-brands').innerHTML=brands.map(b=>`<button type="button" class="plp-brand" data-plp-brand="${escapeHTML(b)}" aria-pressed="false" title="${escapeHTML(b)}">${plpLogos[b]?`<img src="${asset('home/design/brand-'+plpLogos[b]+'.png')}" alt="${escapeHTML(b)}">`:`<span>${escapeHTML(b)}</span>`}<i aria-hidden="true">${icon('check')}</i></button>`).join('');
+ $('#plp-brands').innerHTML=brands.slice(0,plpBrandsShown).map(plpBrandBtn).join('')+(brands.length>plpBrandsShown?`<button type="button" class="plp-brand plp-brand-more" id="plp-brands-more" aria-haspopup="dialog"><b>+${fa(brands.length-plpBrandsShown)}</b><span>برند دیگر</span></button>`:'');
+ $('#plp-brands-all').innerHTML=brands.map(b=>`<button type="button" class="plp-brand-row" data-plp-brand="${escapeHTML(b)}" aria-pressed="false"><span class="plp-check">${icon('check')}</span><span>${escapeHTML(b)}</span><small>${fa(counts[b])} کالا</small></button>`).join('');
  $('#plp-brands-wrap').hidden=brands.length<2;
 }
 function plpGroup(key,label,options,open=true){
@@ -119,16 +122,25 @@ function plpGroup(key,label,options,open=true){
 }
 function plpBuildFacets(){
  const inCat=plpInCat(),brands=[...new Set(inCat.map(p=>p.brand))].sort((a,b)=>a.localeCompare(b));
- const groups=[plpGroup('brand','برند',brands)];
- for(const k of plpFacetKeys()){const vals=[...new Set(inCat.map(p=>p.specs[k]))];if(vals.every(v=>typeof v==='number'))vals.sort((a,b)=>a-b);groups.push(plpGroup(k,plpFacetDefs[k].label,vals))}
+ // Category group exists only in the mobile/tablet filter sheet (desktop keeps the category strip)
+ const cats=`<details class="plp-group plp-sheet-only" open><summary>دسته‌بندی${icon('down')}</summary><div class="plp-group-body"><div class="plp-cat-options">${plpCats.map(c=>`<button type="button" class="plp-cat-option" data-plp-cat="${c.id}" aria-pressed="${c.id===plp.cat}">${c.label}</button>`).join('')}</div></div></details>`;
+ const keys=plpFacetKeys(),groups=[cats];
+ if(keys.includes('use'))groups.push(plpGroup('use',plpFacetDefs.use.label,[...new Set(inCat.map(p=>p.specs.use))]));
+ groups.push(plpGroup('brand','برند',brands));
+ for(const k of keys.filter(k=>k!=='use')){const vals=[...new Set(inCat.map(p=>p.specs[k]))];if(vals.every(v=>typeof v==='number'))vals.sort((a,b)=>a-b);groups.push(plpGroup(k,plpFacetDefs[k].label,vals))}
  $('#plp-facets').innerHTML=groups.join('');
  const b=plpBounds();for(const id of ['#plp-min-range','#plp-max-range']){const r=$(id);r.min=b.lo;r.max=b.hi;r.step=b.step}
+}
+function plpBuildUse(){
+ const has=plpFacetKeys().includes('use');$('#plp-use').hidden=!has;if(!has)return;
+ const vals=[...new Set(plpInCat().map(p=>p.specs.use))];
+ $('#plp-use-list').innerHTML=vals.map(v=>`<button type="button" class="plp-use-chip" data-plp-use="${escapeHTML(v)}" aria-pressed="false">${escapeHTML(v)}</button>`).join('');
 }
 function plpSetCat(id){
  if(id===plp.cat)return;plp.cat=id;
  const inCat=new Set(plpInCat().map(p=>p.brand));plp.brands.forEach(b=>{if(!inCat.has(b))plp.brands.delete(b)});
  plp.facets={};plp.min=plp.max=null;plp.visible=plpPage;
- plpBuildBrands();plpBuildFacets();plpRender();
+ plpBuildBrands();plpBuildFacets();plpBuildUse();plpRender();
 }
 
 /* ---------- Render ---------- */
@@ -142,6 +154,7 @@ function plpRender(){
  $('#plp-breadcrumb').innerHTML=`<a href="${homePageURL()}">صفحه اصلی</a>${icon('arrow')}${cat.id==='all'?'<span aria-current="page">فروشگاه</span>':`<a href="${location.pathname}" data-plp-cat-link="all">فروشگاه</a>${icon('arrow')}<span aria-current="page">${cat.label}</span>`}`;
  $$('[data-plp-cat]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.plpCat===plp.cat));
  $$('[data-plp-brand]').forEach(b=>b.setAttribute('aria-pressed',plp.brands.has(b.dataset.plpBrand)));
+ $$('[data-plp-use]').forEach(b=>b.setAttribute('aria-pressed',!!plp.facets.use?.has(b.dataset.plpUse)));
  // facet counts: each option counts results with every other filter applied
  $$('#plp-facets input[data-f]').forEach(i=>{const k=i.dataset.f,sel=k==='brand'?plp.brands:(plp.facets[k]||new Set());i.checked=sel.has(i.value);const n=plpProducts.filter(p=>plpMatch(p,k)&&String(k==='brand'?p.brand:p.specs[k])===i.value).length;i.disabled=!n&&!i.checked;const lab=i.closest('.plp-option');lab.querySelector('[data-count]').textContent=fa(n);lab.classList.toggle('is-empty',!n&&!i.checked)});
  $$('[data-group-count]').forEach(s=>{const k=s.dataset.groupCount,n=(k==='brand'?plp.brands:(plp.facets[k]||new Set())).size;s.hidden=!n;s.textContent=fa(n)});
@@ -179,8 +192,12 @@ function plpRender(){
 function plpClear(){plp.q='';plp.brands.clear();plp.facets={};plp.min=plp.max=null;plp.stock=plp.sale=false;plp.visible=plpPage;$('#search').value='';plpRender()}
 const plpChanged=()=>{plp.visible=plpPage;plpRender()};
 $('#plp-cats').addEventListener('click',e=>{const b=e.target.closest('[data-plp-cat]');if(b){plpSetCat(b.dataset.plpCat);b.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})}});
+$('#plp-brands-all').addEventListener('click',e=>{const b=e.target.closest('[data-plp-brand]');if(!b)return;const v=b.dataset.plpBrand;plp.brands.has(v)?plp.brands.delete(v):plp.brands.add(v);plpChanged()});
+$('#plp-brands-done').addEventListener('click',()=>$('#plp-brands-dialog').close());
+$('#plp-use-list').addEventListener('click',e=>{const b=e.target.closest('[data-plp-use]');if(!b)return;const set=plp.facets.use||=new Set(),v=b.dataset.plpUse;set.has(v)?set.delete(v):set.add(v);plpChanged()});
 $('#plp-breadcrumb').addEventListener('click',e=>{if(e.target.closest('[data-plp-cat-link]')){e.preventDefault();plpSetCat('all')}});
-$('#plp-brands').addEventListener('click',e=>{const b=e.target.closest('[data-plp-brand]');if(!b)return;const v=b.dataset.plpBrand;plp.brands.has(v)?plp.brands.delete(v):plp.brands.add(v);plpChanged()});
+$('#plp-brands').addEventListener('click',e=>{if(e.target.closest('#plp-brands-more')){openDialog('#plp-brands-dialog');return}const b=e.target.closest('[data-plp-brand]');if(!b)return;const v=b.dataset.plpBrand;plp.brands.has(v)?plp.brands.delete(v):plp.brands.add(v);plpChanged()});
+$('#plp-facets').addEventListener('click',e=>{const b=e.target.closest('[data-plp-cat]');if(b)plpSetCat(b.dataset.plpCat)});
 $('#plp-facets').addEventListener('change',e=>{const i=e.target.closest('input[data-f]');if(!i)return;const k=i.dataset.f,set=k==='brand'?plp.brands:(plp.facets[k]||=new Set());i.checked?set.add(i.value):set.delete(i.value);plpChanged()});
 $('#plp-facets').addEventListener('input',e=>{if(!e.target.matches('[data-brand-search]'))return;const q=plpNorm(e.target.value);e.target.closest('.plp-group-body').querySelectorAll('.plp-option').forEach(l=>l.hidden=!l.dataset.optionLabel.includes(q))});
 $('#plp-stock').addEventListener('change',e=>{plp.stock=e.target.checked;plpChanged()});
@@ -210,8 +227,8 @@ $('#plp-filters').addEventListener('keydown',e=>{if(!e.currentTarget.classList.c
 matchMedia('(min-width:1024px)').addEventListener('change',e=>{if(e.matches)plpCloseFilters()});
 $('#plp-guide-toggle').addEventListener('click',()=>{const b=$('#plp-guide-toggle'),open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!open));$('#plp-guide').classList.toggle('open',!open);b.firstChild.textContent=open?'بیشتر بخوانید':'نمایش کمتر'});
 // Header search and mega menu stay on this page
-navigateCatalog=function(query=''){plp.brands.clear();plp.facets={};plp.min=plp.max=null;plp.stock=plp.sale=false;if(!query)plp.cat='all';plpApplyQuery(query);$('#search').value=plp.q;plp.visible=plpPage;plpBuildBrands();plpBuildFacets();plpRender();$('#plp-results').scrollIntoView({behavior:'smooth',block:'start'})};
+navigateCatalog=function(query=''){plp.brands.clear();plp.facets={};plp.min=plp.max=null;plp.stock=plp.sale=false;if(!query)plp.cat='all';plpApplyQuery(query);$('#search').value=plp.q;plp.visible=plpPage;plpBuildBrands();plpBuildFacets();plpBuildUse();plpRender();$('#plp-results').scrollIntoView({behavior:'smooth',block:'start'})};
 
 /* ---------- Boot ---------- */
-plpReadURL();$('#search').value=plp.q;plpBuildCats();plpBuildBrands();plpBuildFacets();plpRender();setOverlayPosition();
+plpReadURL();$('#search').value=plp.q;plpBuildCats();plpBuildBrands();plpBuildFacets();plpBuildUse();plpRender();setOverlayPosition();
 $('.skip').href='#plp-grid';

@@ -12,3 +12,8 @@ if($('#faq')){const skip=$('.skip');skip.href='#faq';skip.textContent='رفتن 
 function blogPageURL(){return location.pathname.endsWith('/')||location.pathname.endsWith('/index.html')?'../rayax-blog/index.html':'rayax-blog.html'}
 $$('[data-info=articles]').forEach(a=>a.href=blogPageURL());
 if($('#magazine')||$('#mag-article')){const skip=$('.skip');skip.href=$('#magazine')?'#magazine':'#mag-article';skip.textContent='رفتن به محتوای رایاکس مگ';}
+
+function trackPageURL(){return location.pathname.endsWith('/')||location.pathname.endsWith('/index.html')?'../rayax-track/index.html':'rayax-track.html'}
+$$('[data-track-link]').forEach(a=>a.href=trackPageURL());
+if($('#track')){const skip=$('.skip');skip.href='#track';skip.textContent='رفتن به پیگیری سفارش';}
+if($('#account-page')){const skip=$('.skip');skip.href='#account-page';skip.textContent='رفتن به پنل کاربری';}

@@ -20,8 +20,9 @@ def render(page='product'):
     html=includes((SRC/'layout.html').read_text())
     for token,value in {'title':escape(config['title']),'content':includes((SRC/config['content']).read_text()),'page_extra':(SRC/config['extra']).read_text() if config.get('extra') else ''}.items():html=html.replace('{{'+token+'}}',value)
     if re.search(r'\{\{(?:>|title|content|page_extra)',html):raise ValueError('Unresolved layout token')
-    css=(SRC/'shared/fonts.css').read_text()+(SRC/'shared/styles.css').read_text()+(SRC/'shared/mobile-repair.css').read_text()
+    css=(SRC/'shared/fonts.css').read_text()+(SRC/'shared/styles.css').read_text()+(SRC/'shared/mobile-repair.css').read_text()+(SRC/'shared/auth.css').read_text()
     css+=''.join((SRC/name).read_text() for name in config.get('styles',[]))
+    css+=(SRC/'shared/mobile-platform.css').read_text()
     js=''.join((SRC/name).read_text() for name in config['scripts'])
     return html,css,js
 
