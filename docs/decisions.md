@@ -5,7 +5,7 @@ The current product page is the visual baseline. Do not reconstruct already appr
 - Persian RTL, the nine supplied Estedad FD v7.3 TTF weights, official Phosphor icons and the supplied SVG logo. All assets are in `src/assets`.
 - Minimum text size 12px. The earlier one-pass migration was 10→12 and 12→13; do not repeatedly increase already migrated sizes.
 - Brand blue #2546F5, light surfaces #F1F5F8 and white, text #2E3344. Added navy accents and dark borders in product content were removed; the reference footer remains dark.
-- Desktop header is sticky; the separate Snapp Pay banner scrolls away. Header and main content have the same max width, 1440px, on all pages. Menu weights are 600/700.
+- Desktop header is sticky; the separate Snapp Pay banner scrolls away. Header and main content have the same max width, 1280px, on all pages. Menu weights are 600/700.
 - Cart and profile panels open under the main header row, aligned to their own triggers. Mega menu opens under the navigation row.
 - Adding a product directly opens the cart. Quantity controls are inside it; sample cap is five per configuration. All key-feature values are right-aligned, including LTR processor names.
 - Old struck-through price is above the new price. Comparison is removed. Input focus uses a brand border without outline/offset.

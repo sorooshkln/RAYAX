@@ -2,7 +2,7 @@
 /* Author display rules must never override the browser's closed-dialog state. */
 dialog:not([open]) { display: none !important; }
 .mobile-menu { display: none; }
-@media (min-width: 768px) { .container { max-width: 1520px; } }
+@media (min-width: 768px) { .container { max-width: 1280px; } }
 .rayax-mag { display: inline-flex; align-items: center; gap: 5px; }
 .mag-badge { display: inline-block; padding: 1px 6px; border-radius: 4px; background: #2546f5; color: white; font-size: 12px; line-height: 1.7; font-weight: 700; transform: skew(-5deg); }
 .nav-row nav > a, .nav-row nav > button:not(.categories) { display: inline-flex; align-items: center; gap: 8px; }
