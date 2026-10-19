@@ -8,10 +8,10 @@ function renderMega(category='لپ‌تاپ'){$('#mega-categories').innerHTML=ca
 renderMega();$('#open-mega').addEventListener('click',()=>openAnchored('#mega-dialog'));$$('[data-open-mega]').forEach(b=>b.addEventListener('click',()=>openAnchored('#mega-dialog')));
 $('#mega-categories').addEventListener('click',e=>{const b=e.target.closest('[data-mega-category]');if(b)renderMega(b.dataset.megaCategory)});
 $('#mega-dialog').addEventListener('click',e=>{const b=e.target.closest('[data-mega-filter]');if(!b)return;$('#mega-dialog').close();const q=b.dataset.megaFilter;navigateCatalog(q);if(!q)toast('محصولات نمایش داده شدند.')});
-$$('[data-footer-category]').forEach(b=>b.addEventListener('click',()=>{renderMega(b.dataset.footerCategory);window.scrollTo({top:0,behavior:'instant'});openAnchored('#mega-dialog')}));
+$$('[data-footer-category]').forEach(b=>b.addEventListener('click',()=>navigateCatalog(b.dataset.footerCategory)));
 $$('[data-social]').forEach(b=>b.addEventListener('click',()=>info('شبکه‌های اجتماعی رایاکس','<p>نشانی رسمی شبکه‌های اجتماعی در فایل مرجع مشخص نشده است. این بخش برای اتصال به حساب رسمی فروشگاه آماده است.</p>')));
 
-function navigateCatalog(query=''){if(typeof renderRelated==='function'&&$('#related')){$('#search').value=query;renderRelated(query);$('#related').scrollIntoView({behavior:'smooth'})}else{location.href=catalogPageURL()+'?search='+encodeURIComponent(query)}}
+function navigateCatalog(query=''){location.href=catalogPageURL()+(query?'?search='+encodeURIComponent(query):'')}
 if(typeof renderRelated!=='function'){
  $('#search-form').addEventListener('submit',e=>{e.preventDefault();navigateCatalog($('#search').value.trim())});
  $$('[data-tab-link]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();location.href=productPageURL()+'#'+a.dataset.tabLink}));
@@ -20,3 +20,4 @@ if(typeof renderRelated!=='function'){
 function productPageURL(){return location.pathname.endsWith('/')||location.pathname.endsWith('/index.html')?'../rayax-product/index.html':'rayax-product.html'}
 
 function catalogPageURL(){return location.pathname.endsWith('/')||location.pathname.endsWith('/index.html')?'../rayax-catalog/index.html':'rayax-catalog.html'}
+$$('[data-catalog-link]').forEach(a=>a.href=catalogPageURL()+(a.dataset.q?'?search='+encodeURIComponent(a.dataset.q):''));
