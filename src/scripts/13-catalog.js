@@ -44,10 +44,3 @@ $('#plp-max-range').addEventListener('input',e=>{$('#plp-max').value=e.target.va
 $$('#plp-min,#plp-max').forEach(input=>input.addEventListener('input',()=>{plpVisible=16;plpRender()}));
 
 $('.skip').href='#plp-grid';$('#plp-grid').tabIndex=-1;
-
-// Visible edit references stay local to this listing preview.
-const plpReferences=['site-header','plp-breadcrumb','plp-heading','plp-brands','plp-toolbar','plp-filters','plp-price-filter','plp-brand-filter','plp-color-filter','plp-ram-filter','plp-grid','plp-pagination','plp-guide'];
-plpReferences.forEach(id=>{const section=document.getElementById(id);if(!section)return;section.classList.add('plp-reference-section');section.dataset.sectionRef=id;const label=document.createElement('span');label.className='plp-reference-label';label.textContent='#'+id;label.setAttribute('aria-hidden','true');section.prepend(label)});
-const plpFooter=document.querySelector('footer');if(plpFooter){plpFooter.id=plpFooter.id||'plp-footer';plpFooter.classList.add('plp-reference-section');plpFooter.dataset.sectionRef=plpFooter.id;const label=document.createElement('span');label.className='plp-reference-label';label.textContent='#'+plpFooter.id;label.setAttribute('aria-hidden','true');plpFooter.prepend(label)}
-
-const plpServices=document.querySelector('.service-band');if(plpServices){plpServices.id='plp-services';plpServices.classList.add('plp-reference-section');plpServices.insertAdjacentHTML('afterbegin','<span class="plp-reference-label" aria-hidden="true">#plp-services</span>')}

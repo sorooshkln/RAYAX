@@ -119,10 +119,10 @@ main.container>.product-offer-strip{margin-bottom:0}main.container>.product-offe
 .snapp-offer:hover{background:#fff;border-color:#bdbbbb;box-shadow:0 6px 16px #1e24300d}
 .snapp-offer-logo{width:44px;height:44px;border-radius:12px}
 .snapp-offer-text b{display:flex;align-items:center;gap:8px}
-.snapp-offer-text b:after{content:"بدون کارمزد";padding:0 8px;border-radius:999px;background:var(--success-soft);color:var(--success);font-size:12px;font-weight:600;line-height:22px}
+
 .snapp-offer-text>span{display:flex;align-items:center;gap:8px;margin-top:2px}
 .snapp-bars{display:inline-flex;gap:3px}.snapp-bars i{width:14px;height:4px;border-radius:2px;background:var(--line)}.snapp-bars i:first-child{background:var(--text)}
 .snapp-offer-more{color:var(--text)}
 .snapp-plan-head{background:var(--canvas)}
 .snapp-plan li:first-child .snapp-step{background:var(--text)}
-.snapp-offer-text b{flex-wrap:wrap;white-space:nowrap}.snapp-offer-text b:after{white-space:nowrap}@media(max-width:767px){.snapp-offer{padding:12px;gap:12px}.snapp-offer-text b{font-size:13px;gap:6px}}
+.snapp-offer-text b{flex-wrap:wrap;white-space:nowrap}@media(max-width:767px){.snapp-offer{padding:12px;gap:12px}.snapp-offer-text b{font-size:13px;gap:6px}}

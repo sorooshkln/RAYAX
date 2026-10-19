@@ -151,3 +151,28 @@ dialog:not([open]) { display: none !important; }
 /* Account menu: full-site backdrop, panel under the account button. */
 .profile-dialog{top:var(--cart-top,var(--header-bottom));max-height:calc(100dvh - var(--cart-top,var(--header-bottom)) - 16px);border-radius:12px}
 .profile-dialog::backdrop{background:#1e243099;backdrop-filter:none}
+
+/* Product and shared purchase refinements. */
+.review-author{align-items:center;justify-content:flex-start!important}.review-avatar{display:inline-grid;place-items:center;flex:none;width:32px;height:32px;border-radius:50%;background:#f1f1f1;color:#8393a2}.review-avatar svg{width:18px;height:18px}
+.gallery-tools{inset:12px  auto auto 12px;display:flex;gap:4px}.gallery-label{top:24px}
+#image-dialog[open]{display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;padding:64px 56px 20px;height:min(800px,90dvh);background:#fff}
+#image-dialog .modal-gallery-title{position:absolute;top:20px;right:24px;color:var(--text)}
+#image-dialog>img,#image-dialog>video{flex:1;min-height:0;height:0;max-height:none;object-fit:contain;background:transparent}
+#image-dialog .modal-thumbnails{position:static;flex:none;order:10;width:100%;margin-top:16px;justify-content:flex-start;overflow-x:auto;padding:8px 0}
+#image-dialog .modal-counter{position:static;text-align:center;flex:none;order:11;color:var(--muted)}
+#image-dialog .image-close{position:absolute;top:12px;left:12px;color:var(--text)}
+#image-dialog #prev-image{right:8px;left:auto;z-index:2}#image-dialog #next-image{left:8px;right:auto;z-index:2}
+#drawer-count{display:none}.cart-controls{background:#fafafa;border:1px solid var(--line);border-radius:8px;padding:4px;gap:4px}.cart-controls button{border:0}.cart-controls [data-cart-action=plus]{background:#fff;border:1px solid var(--line)}.cart-controls .remove{color:#d83240}
+.pm-user,.pm-who{direction:rtl;text-align:right}.pm-who{align-items:flex-start}.pm-who bdi{align-self:flex-start}
+.plp-reference-label{display:none!important}#plp-grid:before{content:none!important}
+@media(max-width:767px){
+#review-list{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 0 12px}#review-list .review{flex:0 0 88%;min-width:0;padding:16px;border:1px solid var(--line);border-radius:10px;scroll-snap-align:start}#review-list::-webkit-scrollbar{display:none}
+main:has(#product-name)>.benefits{display:none}.product-editorial{position:relative;padding-bottom:20px}.product-editorial:after{content:'';position:absolute;bottom:0;left:calc(50% - 50vw);width:100vw;height:1px;background:var(--line)}
+#image-dialog[open]{inset:0;height:100dvh;max-height:100dvh;padding:64px 16px max(20px,env(safe-area-inset-bottom));background:#fff}#image-dialog:before,#image-dialog:after{display:none}#image-dialog .modal-thumbnails{margin-top:auto;padding-top:16px}#image-dialog .gallery-prev,#image-dialog .gallery-next,#image-dialog .image-close:hover{background:transparent;border:0;box-shadow:none;color:var(--text)}
+}
+.mobile-quantity{background:#fafafa;border:1px solid var(--line);border-radius:8px;padding:4px}.mobile-quantity [data-mobile-quantity=plus]{background:#fff;border:1px solid var(--line);border-radius:6px}.mobile-quantity button:has(use[href="#i-trash"]){color:#d83240}
+.gallery-stage .gallery-tools{inset:12px 12px auto auto;display:flex}.gallery-stage .gallery-label{right:auto;left:24px;width:auto}
+@media(max-width:767px){
+.mobile-buy{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:10px 16px}.mobile-buy>.mobile-quantity{grid-column:1;grid-row:1;width:132px;height:44px;justify-content:space-between;padding:3px;direction:ltr}.mobile-buy>.mobile-quantity button{width:36px;height:36px;min-width:36px;min-height:36px;padding:8px}.mobile-buy>.mobile-quantity [data-mobile-quantity=plus]{order:3}.mobile-buy>.mobile-quantity span{order:2;font-size:14px}.mobile-buy>.mobile-quantity [data-mobile-quantity=minus]{order:1}.mobile-buy>.mobile-price-block{grid-column:2;grid-row:1;min-width:0;justify-self:end}.mobile-buy>.add-to-cart{grid-column:1;grid-row:1;width:100%;min-width:0;font-size:12px}.mobile-buy .mobile-price-block strong{font-size:17px}
+main:has(#product-name) .details-section{margin-top:32px;border-top:0}main:has(#product-name) .tabs{border-top:0}
+}
