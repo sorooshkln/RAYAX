@@ -1,14 +1,32 @@
 <main class="container plp-page" id="catalog">
-<nav id="plp-breadcrumb" class="breadcrumb" aria-label="مسیر صفحه"><a href="#">صفحه اصلی</a><svg aria-hidden="true"><use href="#i-arrow"/></svg><span>فروشگاه</span><svg aria-hidden="true"><use href="#i-arrow"/></svg><span aria-current="page">لپ‌تاپ</span></nav>
-<header id="plp-heading" class="plp-heading"><h1>خرید <span>لپ‌تاپ</span></h1><p>فرصت انتخاب‌ها با فیلترهای تخصصی و به‌روزترین‌ها</p></header>
-<nav class="plp-brands" aria-label="انتخاب برند لپ‌تاپ" id="plp-brands"></nav>
-<div id="plp-toolbar" class="plp-toolbar"><button class="secondary plp-filter-trigger" id="plp-open-filters">فیلترها <span id="plp-filter-count"></span><svg aria-hidden="true"><use href="#i-menu"/></svg></button><label class="plp-sort" for="plp-sort"><span>ترتیب نمایش:</span><select id="plp-sort"><option value="recommended">پیشنهادی</option><option value="newest">تازه‌ترین</option><option value="cheapest">ارزان‌ترین</option><option value="expensive">گران‌ترین</option><option value="popular">پرفروش‌ترین</option></select></label><label class="plp-toggle"><input type="checkbox" id="plp-sale">فقط تخفیف‌دارها</label><span id="plp-count" role="status"></span></div><div id="plp-active" class="plp-active" aria-label="فیلترهای فعال"></div>
-<div class="plp-layout"><aside class="plp-filters" id="plp-filters" aria-label="فیلتر محصولات"><div class="plp-filter-heading"><strong>فیلترها</strong><button id="plp-reset">حذف فیلترها ×</button><button id="plp-close-filters" class="plp-close" aria-label="بستن فیلترها">×</button></div><div class="plp-filter-content">
-<label class="plp-toggle plp-available"><input type="checkbox" id="plp-stock">فقط کالاهای موجود</label>
-<details id="plp-price-filter" open><summary>بازهٔ قیمتی</summary><div class="plp-price-fields"><label class="sr-only" for="plp-min-range">حداقل قیمت</label><input type="range" id="plp-min-range" min="0" max="200000000" step="1000000" value="0"><label class="sr-only" for="plp-max-range">حداکثر قیمت</label><input type="range" id="plp-max-range" min="0" max="200000000" step="1000000" value="200000000"><p id="plp-price-summary" class="plp-price-summary"></p><label for="plp-min">از قیمت (تومان)<input id="plp-min" type="number" min="0" step="1000000" placeholder="۰"></label><label for="plp-max">تا قیمت (تومان)<input id="plp-max" type="number" min="0" step="1000000" placeholder="۲۰۰٬۰۰۰٬۰۰۰"></label><p id="plp-price-error" class="plp-error" role="alert" hidden>قیمت شروع باید کمتر از قیمت پایان باشد.</p></div></details>
-<details id="plp-brand-filter" open><summary>برند لپ‌تاپ</summary><label class="sr-only" for="plp-brand-search">جست‌وجوی برند</label><input type="search" id="plp-brand-search" placeholder="جست‌وجوی برند"><div id="plp-brand-options"></div></details>
-<details id="plp-color-filter"><summary>رنگ محصول</summary><div id="plp-color-options"></div></details>
-<details id="plp-ram-filter"><summary>حافظهٔ رم</summary><div id="plp-ram-options"></div></details>
-</div><button class="primary plp-apply" id="plp-apply">نمایش محصولات</button></aside><div id="plp-results" class="plp-results"><div class="catalog-cards plp-grid" id="plp-grid"></div><div id="plp-pagination" class="plp-pagination"><button class="primary" id="plp-more">بارگذاری بیشتر <svg aria-hidden="true"><use href="#i-down"/></svg></button><span id="plp-progress"></span></div>
-<section id="plp-guide" class="plp-guide"><img src="assets/macbook-editorial-banner-v1.png" alt="لپ‌تاپ مک‌بوک با طراحی سبک" loading="lazy"><h2>خرید لپ‌تاپ؛ انتخاب متناسب با نیاز و بودجهٔ شما</h2><p>انتخاب لپ‌تاپ از شناخت نیاز شما شروع می‌شود. برای کارهای روزمره، یک دستگاه سبک با شارژدهی مناسب انتخاب خوبی است. برای طراحی، برنامه‌نویسی و پردازش‌های سنگین‌تر، پردازنده و حافظهٔ رم را با دقت بیشتری بررسی کنید.</p><div id="plp-guide-more" hidden><p>با فیلتر قیمت، برند و حافظهٔ رم گزینه‌ها را محدود کنید. پیش از خرید، اندازهٔ نمایشگر، وزن، درگاه‌ها و ظرفیت ذخیره‌سازی را با نیازتان مقایسه کنید. برای رفت‌وآمد روزانه، وزن و شارژدهی اهمیت بیشتری دارد؛ برای کارهای گرافیکی، نمایشگر و توان پردازشی را در اولویت قرار دهید.</p></div><button class="secondary" id="plp-guide-toggle" aria-expanded="false" aria-controls="plp-guide-more">بیشتر بخوانید</button></section></div></div>
+<nav id="plp-breadcrumb" class="breadcrumb" aria-label="مسیر صفحه"></nav>
+<header class="plp-head"><div class="plp-head-text"><h1 id="plp-title">همه محصولات</h1><p id="plp-subtitle"></p></div><span class="plp-total" id="plp-total" role="status"></span></header>
+<nav class="plp-cats" id="plp-cats" aria-label="دسته‌بندی محصولات"></nav>
+<section class="plp-brands-wrap" id="plp-brands-wrap" aria-labelledby="plp-brands-title"><h2 class="sr-only" id="plp-brands-title">برندها</h2><div class="plp-brands" id="plp-brands"></div></section>
+<div class="plp-layout">
+<aside class="plp-filters" id="plp-filters" aria-label="فیلتر محصولات">
+<div class="plp-sheet-head"><strong>فیلترها</strong><button type="button" class="plp-link" id="plp-reset" hidden>حذف همه</button><button type="button" class="plp-close" id="plp-close-filters" aria-label="بستن فیلترها"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+<div class="plp-filter-body" id="plp-filter-body">
+<div class="plp-switches"><label class="plp-switch"><span>فقط کالاهای موجود</span><input type="checkbox" id="plp-stock" role="switch"><i aria-hidden="true"></i></label><label class="plp-switch"><span>فقط کالاهای تخفیف‌دار</span><input type="checkbox" id="plp-sale" role="switch"><i aria-hidden="true"></i></label></div>
+<details class="plp-group" id="plp-price-group" open><summary>محدودهٔ قیمت <small class="plp-unit">(تومان)</small><svg aria-hidden="true"><use href="#i-down"/></svg></summary><div class="plp-group-body">
+<div class="plp-range" id="plp-range"><div class="plp-range-track"><i id="plp-range-fill"></i></div><input type="range" id="plp-min-range" aria-label="حداقل قیمت"><input type="range" id="plp-max-range" aria-label="حداکثر قیمت"></div>
+<div class="plp-price-inputs"><label><span>از</span><input id="plp-min" inputmode="numeric" autocomplete="off" aria-describedby="plp-price-error"></label><label><span>تا</span><input id="plp-max" inputmode="numeric" autocomplete="off" aria-describedby="plp-price-error"></label></div>
+<p id="plp-price-error" class="plp-error" role="alert" hidden><svg aria-hidden="true"><use href="#i-warning"/></svg>قیمت شروع باید کمتر از قیمت پایان باشد.</p></div></details>
+<div id="plp-facets"></div>
+</div>
+<div class="plp-sheet-foot"><button type="button" class="plp-btn primary block" id="plp-apply">نمایش محصولات</button></div>
+</aside>
+<div class="plp-results" id="plp-results">
+<div class="plp-toolbar" id="plp-toolbar">
+<div class="plp-sort-tabs" role="radiogroup" aria-label="مرتب‌سازی" id="plp-sort-tabs"><span class="plp-sort-label"><svg aria-hidden="true"><use href="#i-sort"/></svg>مرتب‌سازی:</span></div>
+<div class="plp-mobile-bar"><button type="button" class="plp-bar-btn" id="plp-open-filters" aria-controls="plp-filters" aria-expanded="false"><svg aria-hidden="true"><use href="#i-funnel"/></svg>فیلترها<b id="plp-filter-count" hidden></b></button><button type="button" class="plp-bar-btn" id="plp-open-sort" aria-haspopup="dialog"><svg aria-hidden="true"><use href="#i-sort"/></svg><span id="plp-sort-current">پیشنهادی</span></button></div>
+<span class="plp-count" id="plp-count" aria-live="polite"></span>
+</div>
+<div class="plp-active" id="plp-active" aria-label="فیلترهای فعال"></div>
+<div class="catalog-cards plp-grid" id="plp-grid" tabindex="-1"></div>
+<div class="plp-more" id="plp-more-wrap"><p id="plp-progress-text"></p><div class="plp-progress" aria-hidden="true"><i id="plp-progress-bar"></i></div><button type="button" class="plp-btn ghost" id="plp-more">نمایش محصولات بیشتر<svg aria-hidden="true"><use href="#i-down"/></svg></button></div>
+</div>
+</div>
+<section class="plp-guide" id="plp-guide"><h2 id="plp-guide-title"></h2><div class="plp-guide-text" id="plp-guide-text"></div><button type="button" class="plp-link" id="plp-guide-toggle" aria-expanded="false" aria-controls="plp-guide-text">بیشتر بخوانید<svg aria-hidden="true"><use href="#i-down"/></svg></button></section>
 </main><div class="plp-backdrop" id="plp-backdrop" hidden></div>
+<dialog class="dialog plp-sort-dialog" id="plp-sort-dialog" aria-labelledby="plp-sort-dialog-title"><div class="dialog-heading"><h2 id="plp-sort-dialog-title">مرتب‌سازی بر اساس</h2><button type="button" class="icon-btn" data-close aria-label="بستن"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div><div class="plp-sort-list" id="plp-sort-list" role="radiogroup" aria-label="مرتب‌سازی"></div></dialog>
