@@ -38,3 +38,12 @@
 .auth-otp{gap:8px}
 .auth-otp input{flex:1;max-width:56px;width:0;height:54px}
 }
+/* Mobile: the sign-in modal is a full-screen sheet that slides up; desktop keeps the centred modal */
+@keyframes auth-sheet-up{from{transform:translateY(100%)}to{transform:none}}
+@media(max-width:767px){
+#login-dialog[open]{inset:0;width:100%;max-width:100%;height:100dvh;max-height:100dvh;margin:0;padding:0 0 env(safe-area-inset-bottom);border-radius:0;overflow-y:auto;animation:auth-sheet-up .28s ease-out}
+#login-dialog[open]::before{display:none}
+#login-dialog .auth-top{height:132px}
+#login-dialog #auth-content{padding:32px 20px 24px}
+}
+@media(prefers-reduced-motion:reduce){#login-dialog[open]{animation:none}}

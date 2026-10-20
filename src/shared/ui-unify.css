@@ -28,3 +28,20 @@ html body .ck-page .ck-verified input,html body .ac-field input:read-only{backgr
   html body .ck-cta-total b{font-size:17px;font-weight:700}
   html body .ck-cta-total small{font-size:12px}
 }
+
+/* Mobile: every badge is a pill (no mix of rectangles and circles); cart ship chips keep their tint */
+@media (max-width:767px){
+  html body :is(.stock,.low-stock,.discount,.card-badge,.card-category,.ck-chip,.ck-region,.ck-off,.ck-count,.ck-tags i){border-radius:999px!important}
+  html body :is(.low-stock,.card-badge,.card-category){padding-inline:10px}
+  html body .ck-ship-name .ck-chip{padding:0 10px;background:var(--canvas);color:var(--muted)}
+  html body .ck-ship-name .ck-chip svg{display:inline-block}
+}
+
+/* Mobile product page: roomier sections; savings box gets 8px extra bottom padding on its parent price row */
+@media (max-width:767px){
+  html body #product .buy-card .price-row{padding-bottom:8px}
+  html body #product .buy-card{margin-top:32px}
+  html body #product .config-options,html body #product .color-options{margin-bottom:24px}
+  html body .details-section{margin-top:48px}
+  html body .related{margin-block:48px}
+}
