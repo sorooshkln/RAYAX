@@ -1,0 +1,30 @@
+/* Unified buttons, fields and sticky action bars (last layer, desktop + mobile).
+   Buttons: 48px, 12px radius, 14px/700, brand blue primary. Fields: 48px, 12px radius, 1px #d6dae1, brand-blue focus border. */
+:root{--ui-btn-h:48px;--ui-radius:12px;--ui-field-line:#d6dae1}
+
+/* Buttons (important: page stylesheets use #ck-page / ID selectors) */
+html body .auth-submit{height:var(--ui-btn-h)!important}
+html body :is(.ck-btn,.ac-button,.plp-btn,.auth-submit,.contact-submit,.mobile-buy .add-to-cart,.cart-summary .primary,.ck-cta .ck-btn):not(.sm):not(.icon-btn){min-height:var(--ui-btn-h)!important;padding-inline:20px;border-radius:var(--ui-radius)!important;font-size:14px!important;font-weight:700!important;line-height:1.4;white-space:nowrap;box-shadow:none}
+html body :is(.ck-btn.primary,.ac-button.primary,.plp-btn.primary,.auth-submit,.contact-submit,.mobile-buy .add-to-cart,.cart-summary .primary,.ck-cta .ck-btn):not(:disabled):not(.loading){background:var(--primary);color:#fff!important}
+html body :is(.ck-btn.primary,.ac-button.primary,.plp-btn.primary,.auth-submit,.contact-submit,.mobile-buy .add-to-cart,.cart-summary .primary,.ck-cta .ck-btn):not(:disabled):not(.loading):hover{background:var(--primary-hover)}
+
+/* Fields */
+html body :is(.ck-page .ck-field,.ck-dialog .ck-field,.ac-field) :is(input,select):not([type=checkbox]):not([type=radio]),
+html body :is(.ck-inline input,.auth-phone-field input){height:var(--ui-btn-h);min-height:var(--ui-btn-h);border:1px solid var(--ui-field-line);border-radius:var(--ui-radius);background-color:#fff;box-shadow:none}
+html body :is(.ck-page .ck-field,.ck-dialog .ck-field,.ac-field) textarea{border:1px solid var(--ui-field-line);border-radius:var(--ui-radius);background-color:#fff;box-shadow:none}
+html body :is(.auth-otp input){border-radius:var(--ui-radius);border:1px solid var(--ui-field-line)}
+html body :is(.ck-page .ck-field,.ck-dialog .ck-field,.ac-field) :is(input,select,textarea):focus,
+html body :is(.ck-inline input,.auth-phone-field input,.auth-otp input):focus{border-color:var(--primary);box-shadow:none;outline:0}
+html body .ck-page .ck-verified input,html body .ac-field input:read-only{background-color:var(--canvas)}
+
+/* Mobile sticky action bars share the product buy-bar look: white bar, top hairline, soft shadow, button + price block */
+@media (max-width:767px){
+  html body .ck-cta{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:16px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 16px #1e243008}
+  html body .ck-cta .ck-btn{grid-column:1;grid-row:1;width:auto;min-width:150px;flex:none}
+  html body .ck-cta-total{grid-column:2;grid-row:1;justify-self:end;display:grid;gap:0;min-width:0}
+  html body .ck-cta-total{line-height:1.5}
+  html body .ck-cta-total span{font-size:12px;color:var(--muted)}
+  html body .ck-cta-total p{line-height:1.5;font-size:17px;font-weight:700;color:var(--text);white-space:nowrap}
+  html body .ck-cta-total b{font-size:17px;font-weight:700}
+  html body .ck-cta-total small{font-size:12px}
+}

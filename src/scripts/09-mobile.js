@@ -67,3 +67,5 @@ if(!$('.mobile-buy')&&!$('#ck-page')){
   if(tab==='account'){if(sessionUser?.phone)location.href=accountPageURL();else beginAccountLogin()}
   if(tab==='support')openDialog('#support-sheet')});
 }
+/* Keyboard-aware sheets: while the keyboard is open an input sheet becomes a full-height panel pinned to the visual viewport */
+if(window.visualViewport){const vv=visualViewport,el=document.documentElement,sync=()=>{el.style.setProperty('--vvh',vv.height+'px');el.style.setProperty('--vvt',vv.offsetTop+'px');el.classList.toggle('kb-open',innerHeight-vv.height-vv.offsetTop>100&&!!document.querySelector('dialog[open]'))};vv.addEventListener('resize',sync);vv.addEventListener('scroll',sync);sync();document.addEventListener('focusin',e=>{if(e.target.matches('dialog input,dialog textarea,dialog select'))setTimeout(()=>{sync();e.target.scrollIntoView({block:'center',behavior:'smooth'})},350)})}

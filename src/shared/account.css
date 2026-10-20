@@ -457,3 +457,21 @@
 
 /* No "حساب کاربری من" title or back-to-shop link (title kept for screen readers) */
 .ac-page-heading{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
+
+/* Mobile: own header (back arrow + title) instead of the site header/footer; tab bar stays */
+.ac-mhead{display:none}
+@media(max-width:860px){
+body:has(#account-page) :is(#site-header,.announcement,.mobile-header-spacer,.service-band,body>footer){display:none!important}
+.ac-mhead{display:flex;align-items:center;gap:8px;min-height:56px;width:100vw;margin:0 calc(50% - 50vw) 16px;padding-inline:20px;background:#fff;border-bottom:1px solid var(--line)}
+.ac-mhead strong{font-size:14px;font-weight:600;color:var(--text)}
+.ac-mback{display:grid;place-items:center;flex:none;width:32px;height:40px;padding:0;border:0;background:none;color:var(--text);cursor:pointer}
+.ac-mback svg{width:16px;height:16px;fill:currentColor}
+.ac-mlogo{display:block;margin-inline-start:auto}.ac-mlogo img{display:block;width:32px;height:auto}
+.ac-page{padding-top:0}
+body:has(.ac-layout[data-section=inner]) .ac-mhead{display:none}
+}
+
+/* Table-like lists: every second row #fafafa, first row white */
+.ac-order:nth-of-type(even){background:#fafafa}
+.ac-tx li{padding-inline:12px;margin-inline:-12px}.ac-tx li:nth-child(even){background:#fafafa}
+.ac-lines li:nth-child(even){background:#fafafa}

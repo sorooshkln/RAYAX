@@ -889,3 +889,19 @@ body:has(#ck-page){background:#fff}
 .ck-head-back svg{width:20px;height:20px}
 .ck-head-title{order:0!important;margin-inline-start:0!important}
 .ck-head-logo{order:0!important;margin-inline-start:auto!important}
+
+/* Mobile: spaced payment cards, no footer (fixed action bar owns the bottom) */
+@media(max-width:767px){
+.ck-pays{gap:12px}
+.ck-pay,.ck-pay:has(input:checked){padding:14px;border:1px solid var(--line);border-radius:12px}
+.ck-pay:has(input:checked){border-color:var(--text)}
+.ck-foot{display:none}
+body:has(.ck-cta) .ck-page{padding-bottom:96px}
+}
+
+/* Mobile header: icon-only logo (separate mark file, not a cropped full logo); roomier savings/Snapp spacing */
+@media(max-width:767px){
+.ck-head-logo{width:auto;height:auto;overflow:visible}
+.ck-head-logo img{content:url("assets/logo-mark.svg");position:static!important;width:32px!important;height:auto!important;object-fit:contain}
+.ck-sum .ck-perk{margin-top:24px!important}
+}

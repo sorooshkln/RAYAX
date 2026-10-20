@@ -32,7 +32,7 @@
 @media(max-width:767px){
 .auth-dialog{max-width:100%}
 .auth-dialog[open]{padding:0 0 env(safe-area-inset-bottom);border-radius:24px 24px 0 0}
-.auth-top{height:112px}
+.auth-top{height:104px;margin:12px 12px 0;border:1px solid #eceef2;border-radius:16px}
 #auth-content{padding:24px 20px 22px}
 .auth-dialog h2{font-size:19px}
 .auth-otp{gap:8px}

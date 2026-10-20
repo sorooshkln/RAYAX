@@ -22,7 +22,7 @@ def render(page='product'):
     if re.search(r'\{\{(?:>|title|content|page_extra)',html):raise ValueError('Unresolved layout token')
     css=(SRC/'shared/fonts.css').read_text()+(SRC/'shared/styles.css').read_text()+(SRC/'shared/mobile-repair.css').read_text()+(SRC/'shared/auth.css').read_text()
     css+=''.join((SRC/name).read_text() for name in config.get('styles',[]))
-    css+=(SRC/'shared/mobile-platform.css').read_text()
+    css+=(SRC/'shared/mobile-platform.css').read_text()+(SRC/'shared/ui-unify.css').read_text()
     js=''.join((SRC/name).read_text() for name in config['scripts'])
     return html,css,js
 

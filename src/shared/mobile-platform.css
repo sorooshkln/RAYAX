@@ -34,6 +34,14 @@
     z-index: 2147483647;
     pointer-events: none;
   }
+  /* Keyboard open: the sheet fills the visual viewport so the field and its button stay reachable */
+  html.kb-open dialog[open]:not(.image-dialog):not(#image-dialog){inset:var(--vvt,0px) 0 auto 0;height:var(--vvh);max-height:var(--vvh);border-radius:0;transition:none}
+  html.kb-open dialog[open]::after{display:none}
+  /* Fixed bottom bars keep 12px from the screen edge */
+  .mobile-buy{padding-block:12px calc(12px + env(safe-area-inset-bottom,0px));grid-template-columns:150px minmax(0,1fr)}
+  .mobile-buy>.add-to-cart{width:100%}
+  .mobile-buy>.mobile-price-block{justify-self:end}
+  .ck-cta{padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
   /* Safari focus zoom is prevented by the field's actual font size.
      Pinch zoom stays available; placeholders keep their approved styling. */
   input:not([type='hidden']):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']):not([type='file']):not([type='button']):not([type='submit']):not([type='reset']),
@@ -42,4 +50,10 @@
   [contenteditable='true'],
   [contenteditable='plaintext-only'] { font-size: 16px !important; }
   .ck-otp input, .auth-otp input { font-size: 24px !important; }
+}
+
+/* Compact (scrolled) mobile header is identical on every page: menu, icon-only logo, search, cart */
+@media (max-width: 767px) {
+  .header-scrolled #site-header .account-btn { display: none !important; }
+  .header-scrolled #site-header .brand > img { content: url("assets/logo-mark.svg"); width: 42px; height: 30px; object-fit: contain; }
 }
