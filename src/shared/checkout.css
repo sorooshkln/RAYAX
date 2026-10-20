@@ -905,3 +905,26 @@ body:has(.ck-cta) .ck-page{padding-bottom:96px}
 .ck-head-logo img{content:url("assets/logo-mark.svg");position:static!important;width:32px!important;height:auto!important;object-fit:contain}
 .ck-sum .ck-perk{margin-top:24px!important}
 }
+
+/* Suggestions live in a white panel; rail is clipped inside it */
+.ck-suggest.ck-panel{overflow:hidden}
+.ck-suggest.ck-panel .ck-rail{margin-inline:0;padding:4px 0 8px}
+.ck-suggest.ck-panel .ck-sec-head{margin-bottom:16px}
+
+/* One field standard: right-aligned values and placeholders */
+.ck-page .ck-field :is(input,select,textarea),.ck-dialog .ck-field :is(input,select,textarea),.ck-page .ck-inline input{text-align:right!important;text-align-last:right!important}
+.ck-page .ck-field :is(input,select,textarea)::placeholder,.ck-dialog .ck-field :is(input,select,textarea)::placeholder,.ck-page .ck-inline input::placeholder{text-align:right}
+
+/* Courier is Tehran/Karaj only; other cities see it disabled */
+.ck-ship-card.is-off{opacity:.5;cursor:not-allowed;pointer-events:none}
+
+/* Selected address: quiet outline only (desktop) */
+@media(min-width:768px){
+.ck-address:has(input:checked){border-color:#1e2430;box-shadow:none;background:#fff}
+.ck-address:has(input:checked) .ck-address-pin{background:var(--canvas);color:#1e2430}
+}
+
+/* Failed payment: even rhythm between blocks */
+.ck-result.bad .ck-receipt{margin-top:24px}
+.ck-result.bad .ck-result-notes{gap:12px;margin-top:24px}
+.ck-result.bad .ck-result-actions{margin-top:24px;padding:0}

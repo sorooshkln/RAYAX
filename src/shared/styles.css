@@ -206,3 +206,6 @@ body.search-open::after{content:"";position:fixed;inset:0;z-index:20;background:
 .header-scrolled #site-header .search>button{height:42px;min-height:0}
 @media(min-width:768px){.header-scrolled #site-header .header-main{padding-block:18px 12px!important}}
 @media(max-width:767px){.header-scrolled #site-header .header-main{padding-block:16px!important}.header-scrolled #site-header :is(.mobile-menu,#open-cart){width:44px!important}}
+/* Header menu: all items grey, the current page in black */
+.nav-row nav>a,.nav-row nav>button:not(.categories){color:#8393a2}
+.nav-row nav>a.is-current,.nav-row nav>button.is-current{color:#000;font-weight:700}

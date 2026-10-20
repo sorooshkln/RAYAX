@@ -192,3 +192,14 @@
 #product .buy-save svg{width:14px;height:14px}
 #product .buy-save b{font-size:14px;font-weight:800}
 #product .buy-save b span{font-size:12px;font-weight:500}
+
+/* Savings badge: 10px more bottom room (desktop) */
+@media(min-width:768px){#product .price-row>.buy-save{padding-bottom:18px}}
+
+/* Gallery thumbnails: soft tile, quiet hover, navy selected outline */
+#product .thumb{border:1px solid #eceef2;border-radius:12px;background:#f7f8fa!important;transition:border-color .2s,transform .2s,background-color .2s}
+#product .thumb:not(.thumb-video):hover{border-color:#c9cfd9;transform:translateY(-2px)}
+#product .thumb.selected{background:#fff!important;border-color:#1e2430;box-shadow:0 0 0 1px #1e2430}
+
+/* Full-bleed offer strip uses 100vw (includes scrollbar): never scroll sideways */
+body:has(#product-offer-strip){overflow-x:clip}

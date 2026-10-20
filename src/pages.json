@@ -32,11 +32,13 @@
       "scripts/09-mobile.js",
       "scripts/10-site-links.js",
       "scripts/12-product-card.js",
+      "scripts/11-home-data.js",
       "scripts/11-home.js"
     ],
     "styles": [
       "shared/catalog-cards.css",
-      "shared/home.css"
+      "shared/home.css",
+      "shared/home-refresh.css"
     ]
   },
   "catalog": {
@@ -103,7 +105,8 @@
       "scripts/17-blog.js"
     ],
     "styles": [
-      "shared/magazine.css"
+      "shared/magazine.css",
+      "shared/magazine-blog.css"
     ]
   },
   "article": {
@@ -120,7 +123,8 @@
       "scripts/18-article.js"
     ],
     "styles": [
-      "shared/magazine.css"
+      "shared/magazine.css",
+      "shared/article.css"
     ]
   },
   "cart": {
@@ -172,6 +176,73 @@
     ],
     "styles": [
       "shared/account.css"
+    ]
+  },
+  "about": {
+    "title": "درباره ما | رایاکس",
+    "content": "pages/about.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js"
+    ],
+    "styles": [
+      "shared/about.css"
+    ]
+  },
+  "terms": {
+    "title": "قوانین و مقررات | رایاکس",
+    "content": "pages/terms.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js"
+    ],
+    "styles": [
+      "shared/terms.css"
+    ]
+  },
+  "home2": {
+    "title": "رایاکس | همراه انتخاب‌های دیجیتال شما",
+    "content": "pages/home2.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js",
+      "scripts/12-product-card.js",
+      "scripts/11-home-data.js",
+      "scripts/20-home2.js"
+    ],
+    "styles": [
+      "shared/catalog-cards.css",
+      "shared/home2.css"
+    ]
+  },
+  "mag-category": {
+    "title": "دسته‌بندی مقالات | رایاکس مگ",
+    "content": "pages/mag-category.html",
+    "scripts": [
+      "scripts/01-core.js",
+      "scripts/03-cart.js",
+      "scripts/06-navigation.js",
+      "scripts/07-account.js",
+      "scripts/09-mobile.js",
+      "scripts/10-site-links.js",
+      "scripts/16-magazine-data.js",
+      "scripts/21-mag-category.js"
+    ],
+    "styles": [
+      "shared/magazine.css",
+      "shared/magazine-blog.css"
     ]
   }
 }

@@ -1,141 +1,3 @@
-const homeProducts=[
- {
-  "id": "watch",
-  "name": "ساعت هوشمند مدل Ultra با بند مشکی",
-  "brand": "RAYAX",
-  "category": "accessories",
-  "label": "ساعت هوشمند",
-  "image": "home/design/product-watch.png",
-  "price": 17980000
- },
- {
-  "id": "gamingbuds",
-  "name": "هدفون بی‌سیم گیمینگ با کیس شارژ",
-  "brand": "RAYAX",
-  "category": "accessories",
-  "label": "هدفون و هندزفری",
-  "image": "home/design/product-gaming-buds.png",
-  "price": 3980000
- },
- {
-  "id": "gpu",
-  "name": "کارت گرافیک MSI دو فن مناسب گیمینگ",
-  "brand": "RAYAX",
-  "category": "computer",
-  "label": "قطعات کامپیوتر",
-  "image": "home/design/product-gpu.png",
-  "price": 24980000
- },
- {
-  "id": "buds",
-  "name": "هدفون بی‌سیم با کیس شارژ جمع‌وجور",
-  "brand": "RAYAX",
-  "category": "accessories",
-  "label": "هدفون و هندزفری",
-  "image": "home/design/product-buds.png",
-  "price": 2490000
- },
- {
-  "id": "band",
-  "name": "مچ‌بند هوشمند با نمایشگر رنگی",
-  "brand": "RAYAX",
-  "category": "accessories",
-  "label": "ساعت و مچ‌بند",
-  "image": "home/design/product-band.png",
-  "price": 1790000
- },
- {
-  "id": "air13",
-  "name": "لپ‌تاپ ۱۵.۶ اینچی با طراحی باریک و سبک",
-  "brand": "RAYAX",
-  "category": "laptop",
-  "label": "لپ‌تاپ",
-  "image": "home/design/product-laptop.png",
-  "price": 64980000
- },
- {
-  "id": "camera",
-  "name": "دوربین ورزشی ۳۶۰ درجه مناسب سفر",
-  "brand": "RAYAX",
-  "category": "accessories",
-  "label": "دوربین و لوازم جانبی",
-  "image": "home/design/product-camera.png",
-  "price": 12980000
- },
- {
-  "id": "printer",
-  "name": "پرینتر رومیزی کانن مناسب خانه و دفتر",
-  "brand": "RAYAX",
-  "category": "computer",
-  "label": "لوازم کامپیوتر",
-  "image": "home/design/product-printer.png",
-  "price": 8490000
- },
- {
-  "id": "speaker",
-  "name": "اسپیکر قابل حمل با نورپردازی رنگی",
-  "brand": "RAYAX",
-  "category": "accessories",
-  "label": "اسپیکر",
-  "image": "home/design/product-speaker.png",
-  "price": 3980000
- },
- {
-  "id": "console",
-  "name": "کنسول بازی سونی PlayStation 5 همراه دسته",
-  "brand": "RAYAX",
-  "category": "game",
-  "label": "کنسول و بازی",
-  "image": "home/design/product-console.png",
-  "price": 34980000
- },
- {
-  "id": "ssd",
-  "name": "حافظه SSD اکسترنال لکسار با طراحی سبک",
-  "brand": "RAYAX",
-  "category": "computer",
-  "label": "حافظه و ذخیره‌سازی",
-  "image": "home/design/product-ssd.png",
-  "price": 3490000
- },
- {
-  "id": "odyssey",
-  "name": "مانیتور سامسونگ مدل Odyssey G5 مناسب گیمینگ",
-  "brand": "RAYAX",
-  "category": "computer",
-  "label": "مانیتور",
-  "image": "home/design/product-odyssey.png",
-  "price": 18980000
- },
- {
-  "id": "monitor",
-  "name": "مانیتور ال‌جی با نمایشگر عریض و رنگ‌های زنده",
-  "brand": "RAYAX",
-  "category": "computer",
-  "label": "مانیتور",
-  "image": "home/design/product-monitor.png",
-  "price": 12490000
- },
- {
-  "id": "router",
-  "name": "روتر بی‌سیم دو آنتن مناسب خانه و محل کار",
-  "brand": "RAYAX",
-  "category": "computer",
-  "label": "شبکه و ارتباطات",
-  "image": "home/design/product-router.png",
-  "price": 2490000
- },
- {
-  "id": "iphone13",
-  "name": "گوشی موبایل اپل مدل iPhone 16 Pro Max ظرفیت ۲۵۶ گیگابایت",
-  "brand": "Apple",
-  "category": "mobile",
-  "label": "گوشی موبایل",
-  "image": "home/design/product-phone.png",
-  "price": 72980000
- }
-];
-
 const homeOffers=[homeProducts[14],homeProducts[13],homeProducts[12],homeProducts[11],homeProducts[10]];
 $('#home-offer-grid').innerHTML=[...homeOffers,...homeOffers].map(p=>productCard(p,true)).join('')+`<a class="home-offer-more" href="${catalogPageURL()}"><svg aria-hidden="true"><use href="#i-arrow"/></svg><span>مشاهده بیشتر</span></a>`;
 let homeFilter='all',homeQuery='';
@@ -159,7 +21,9 @@ setInterval(()=>{const t=Math.max(0,Math.floor((offerDeadline-Date.now())/1000))
 const homeBrandAssets={"SAMSUNG": "samsung", "Apple": "apple", "logitech": "logitech", "ANKER": "anker", "Lenovo": "lenovo", "xiaomi": "xiaomi", "baseus": "baseus", "ASUS": "asus", "GREEN LION": "greenlion"};
 $('#home-brands').innerHTML=Object.entries(homeBrandAssets).map(([brand,file])=>`<button data-brand="${brand}"><img src="${asset('home/design/brand-'+file+'.png')}" alt="${brand}"></button>`).join('');
 $('#home-brands').addEventListener('click',e=>{const b=e.target.closest('[data-brand]');if(b)navigateCatalog(b.dataset.brand)});
-$('#home-utilities').innerHTML=[["انواع آداپتور", "adapter"], ["کابل شارژ", "cable"], ["هندزفری", "earbuds"], ["پاوربانک", "powerbank"], ["کیف لپ‌تاپ", "bag"], ["هدفون", "headphones"], ["موس و کیبورد", "keyboard"], ["هاب و تبدیل", "hub"], ["استند لپ‌تاپ", "stand"]].map(([name,file])=>`<button data-utility><img src="${asset('home/design/utility-'+file+'.png')}" alt="">${name}</button>`).join('');$('#home-utilities').addEventListener('click',e=>{if(e.target.closest('[data-utility]'))selectHomeCategory('accessories')});
+const homeNeeds=[['شارژ و انرژی','آداپتور، کابل و پاوربانک',['adapter','cable','powerbank'],'violet'],['صدا و سرگرمی','هدفون و هندزفری بی‌سیم',['headphones','earbuds'],'blue'],['میز کار مرتب','هاب، استند، موس و کیبورد',['hub','stand','keyboard'],'teal'],['همراه سفر','کیف لپ‌تاپ و لوازم همراه',['bag','powerbank'],'amber']];
+$('#home-utilities').innerHTML=homeNeeds.map(([title,sub,imgs,tone])=>`<button class="home-need ${tone}" data-utility><span class="home-need-text"><b>${title}</b><small>${sub}</small></span><span class="home-need-art">${imgs.map(f=>`<img src="${asset('home/design/utility-'+f+'.png')}" alt="" loading="lazy">`).join('')}</span><i>${icon('arrow')}</i></button>`).join('');$('#home-utilities').addEventListener('click',e=>{if(e.target.closest('[data-utility]'))navigateCatalog('لوازم جانبی')});
+$$('.home-shop [data-catalog-link]').forEach(a=>a.href=catalogPageURL());
 const homeArticleTitles=['چه وسایلی برای خانه دیجیتال نیاز داریم؟','راهنمای خرید لپ‌تاپ برای کار و دانشگاه','چطور لوازم جانبی مناسب انتخاب کنیم؟','پیش از خرید مک‌بوک این نکات را بخوانید'];
 function homeArticleCard(title,i){return `<a class="home-blog-card" href="${(location.pathname.endsWith('/')||location.pathname.endsWith('/index.html')?'../rayax-article/index.html':'rayax-article.html')}?story=${['desk-setup','laptop-guide','usb-hub','laptop-guide'][i]||'laptop-guide'}"><img src="${asset('home/design/blog-cover.png')}" alt="راهنمای کار با ابزارهای دیجیتال" loading="lazy"><h3>${title}</h3><div><span>۱۴۰۵/۰۷/${fa(12+i)}</span><span>مطالعه بیشتر ‹</span></div></a>`}
 $('#home-blog-grid').innerHTML=homeArticleTitles.map(homeArticleCard).join('');
@@ -170,3 +34,5 @@ $('.home-page').addEventListener('click',e=>{if(e.target.closest('[data-home-pro
 setOverlayPosition();
 
 $$('.home-offer-arrow').forEach(b=>b.addEventListener('click',()=>$('#home-offer-grid').scrollBy({left:(b.dataset.dir==='next'?-1:1)*($('#home-offer-grid .related-card').offsetWidth+12)*2,behavior:'smooth'})));
+// Scroll reveal: only when motion is allowed, so content never stays hidden otherwise
+if('IntersectionObserver' in window&&matchMedia('(prefers-reduced-motion: no-preference)').matches){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});$$('#home>:not(.home-hero)').forEach(s=>{s.classList.add('reveal');io.observe(s)})}

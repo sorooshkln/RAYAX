@@ -45,3 +45,12 @@ html body .ck-page .ck-verified input,html body .ac-field input:read-only{backgr
   html body .details-section{margin-top:48px}
   html body .related{margin-block:48px}
 }
+/* Unified product card (2026-10-20): every page follows the home-page card */
+.related-card.related-card{padding:0;border:1px solid #e8ebf0;border-radius:18px;overflow:hidden;box-shadow:none;transform:none;transition:border-color .25s,box-shadow .25s}
+.related-card.related-card:hover{border-color:#c9d2ff;box-shadow:none;transform:none}
+.related-card.related-card img{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.related-card.related-card:hover img{transform:scale(1.06)}
+@media(max-width:767px){.related-card.related-card{border-radius:16px}}
+@media(prefers-reduced-motion:reduce){.related-card.related-card img{transition:none}.related-card.related-card:hover img{transform:none}}
+/* Product mobile bar: price on the start side, wide add-to-cart button beside it */
+@media(max-width:767px){html body .mobile-buy{grid-template-columns:auto minmax(0,1fr);gap:20px}html body .mobile-buy>.mobile-price-block{grid-column:1;justify-self:start}html body .mobile-buy>.add-to-cart,html body .mobile-buy>.mobile-quantity{grid-column:2}html body .mobile-buy>.mobile-quantity{justify-self:stretch;width:100%}}

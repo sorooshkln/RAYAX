@@ -1,0 +1,42 @@
+<svg width="1429" height="774" viewBox="0 0 1429 774" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.2">
+<mask id="mask0_102_18922" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="-220" width="1429" height="994">
+<path d="M0.5 -219.5H1428.46V773.5H0.5V-219.5Z" fill="url(#paint0_radial_102_18922)" stroke="#233D6A"/>
+</mask>
+<g mask="url(#mask0_102_18922)">
+<path d="M163.63 -220L163.63 774" stroke="#233D6A"/>
+<path d="M228.422 -220L228.422 774" stroke="#233D6A"/>
+<path d="M293.228 -220L293.227 774" stroke="#233D6A"/>
+<path d="M358.024 -220L358.024 774" stroke="#233D6A"/>
+<path d="M422.825 -220L422.825 774" stroke="#233D6A"/>
+<path d="M487.614 -220L487.614 774" stroke="#233D6A"/>
+<path d="M552.415 -220L552.415 774" stroke="#233D6A"/>
+<path d="M617.212 -220L617.212 774" stroke="#233D6A"/>
+<path d="M682.017 -220L682.017 774" stroke="#233D6A"/>
+<path d="M746.81 -220L746.81 774" stroke="#233D6A"/>
+<path d="M811.606 -220L811.606 774" stroke="#233D6A"/>
+<path d="M876.407 -220L876.407 774" stroke="#233D6A"/>
+<path d="M941.204 -220L941.204 774" stroke="#233D6A"/>
+<path d="M1006 -220L1006 774" stroke="#233D6A"/>
+<path d="M1070.8 -220L1070.8 774" stroke="#233D6A"/>
+<path d="M1135.6 -220L1135.6 774" stroke="#233D6A"/>
+<path d="M1200.4 -220L1200.4 774" stroke="#233D6A"/>
+<path d="M1265.19 -220L1265.19 774" stroke="#233D6A"/>
+<path d="M1428.96 50.9453L0.00317378 50.9451" stroke="#233D6A"/>
+<path d="M1428.96 115.743L0.00317378 115.743" stroke="#233D6A"/>
+<path d="M1428.96 180.541L0.00317378 180.541" stroke="#233D6A"/>
+<path d="M1428.96 245.339L0.00317378 245.339" stroke="#233D6A"/>
+<path d="M1428.96 310.137L0.00317378 310.137" stroke="#233D6A"/>
+<path d="M1428.96 374.933L0.00317378 374.933" stroke="#233D6A"/>
+<path d="M1428.96 439.733L0.00317378 439.733" stroke="#233D6A"/>
+<path d="M1428.96 504.531L0.00317378 504.531" stroke="#233D6A"/>
+<path d="M1428.96 569.329L0.00317378 569.329" stroke="#233D6A"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_102_18922" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(714.479 277) rotate(90) scale(497 714.479)">
+<stop stop-color="white" stop-opacity="0.3"/>
+<stop offset="1" stop-color="#737373" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>

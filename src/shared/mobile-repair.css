@@ -238,3 +238,10 @@ main:has(#product-name) .details-section{margin-top:32px;border-top:0}main:has(#
   #site-header .search > button { height: 42px; min-height: 0; }
 }
 @media (max-width: 767px) { .header-scrolled #site-header .header-actions { display: flex; gap: 8px; } .header-scrolled #site-header .account-btn { width: 44px !important; height: 44px !important; } }
+
+/* Mobile sheets: action buttons stay pinned to the bottom while the content scrolls */
+@media (max-width: 767px) {
+  dialog[open] :is(.ck-dialog-foot, .ac-dialog-foot) { position: sticky; bottom: calc(-1 * max(24px, env(safe-area-inset-bottom))); z-index: 3; margin: 16px -20px calc(-1 * max(24px, env(safe-area-inset-bottom))); padding: 12px 20px max(16px, env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid #eceef2; }
+  dialog[open] .ck-dialog-foot .ck-btn { flex: 1; }
+  #review-form > button[type="submit"] { position: sticky; bottom: 0; z-index: 3; box-shadow: 0 0 0 12px #fff; }
+}
