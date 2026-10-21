@@ -17,7 +17,7 @@ $('.article-cover').dataset.cover=articleStory.id;$('.article-cover').setAttribu
 const articleShareText=encodeURIComponent(articleStory.title),articleShareURL=encodeURIComponent(location.href);
 const articleShareLinks={telegram:`https://t.me/share/url?url=${articleShareURL}&text=${articleShareText}`,whatsapp:`https://wa.me/?text=${articleShareText}%20${articleShareURL}`,x:`https://x.com/intent/post?url=${articleShareURL}&text=${articleShareText}`};
 $$('[data-share]').forEach(el=>{if(articleShareLinks[el.dataset.share])el.href=articleShareLinks[el.dataset.share]});
-$('[data-share="copy"]').addEventListener('click',()=>$('#article-share').click());
+$$('[data-share="copy"]').forEach(el=>el.addEventListener('click',()=>$('#article-share').click()));
 
 // Previous / next story
 const articleIndex=magStories.indexOf(articleStory),articlePrev=magStories[articleIndex-1],articleNext=magStories[articleIndex+1];

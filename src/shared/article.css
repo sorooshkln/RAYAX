@@ -173,3 +173,7 @@ body:has(#mag-article){overflow-x:clip}
 #mag-article .article-related::before{content:none}
 #mag-article .article-related{margin-top:64px;padding-top:40px;border-top:1px solid var(--paper-line)}
 @media(max-width:767px){#mag-article .article-aside{background:#fff}}
+
+/* Sidebar share (replaces the help card) */
+#mag-article .article-aside-share{flex-wrap:wrap;gap:8px;padding-top:16px;border-top:1px solid var(--paper-line)}
+#mag-article .article-aside-share>span{flex-basis:100%;margin-bottom:4px;font-size:14px;font-weight:700;color:var(--ink)}

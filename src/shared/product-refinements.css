@@ -35,10 +35,20 @@
 :is(#reviews,#all-reviews-dialog) #more-reviews{color:#2546f5;border-color:#dce5f6;background:#f7f9ff;margin-top:20px}
 .product-meta .stock{background:#edf8f1;color:#26825b;border-radius:6px;padding:4px 8px}
 .product .rating-row>span:first-child{background:#fff8e7;border-radius:6px;padding:3px 9px;color:#806323}
-.benefits>div>svg{width:40px;height:40px;padding:9px;border-radius:12px;background:#e8efff;color:#5274c7}
-.benefits>div:nth-child(2)>svg{background:#e4f4ec;color:#3b9474}
-.benefits>div:nth-child(3)>svg{background:#fff0dd;color:#b98437}
-.benefits>div:nth-child(4)>svg{background:#eee8fa;color:#8b6db6}
+.benefits>div{--tint:#e9edff;--tone:#2546f5}
+.benefits>div:nth-child(2){--tint:#e4f4ec;--tone:#216b35}
+.benefits>div:nth-child(3){--tint:#fff0dd;--tone:#a46a12}
+.benefits>div:nth-child(4){--tint:#eee8fa;--tone:#7a52b3}
+.benefits>div>svg{width:40px;height:40px;padding:9px;border-radius:12px;background:var(--tint);color:var(--tone)}
+/* Desktop: four separate cards (radius 12, padding 24, 1px line) */
+@media(min-width:768px){
+.benefits{gap:16px;padding:0;background:none;border-radius:0}
+.benefits>div{align-items:center;gap:12px;padding:16px;border:1px solid var(--line)!important;border-radius:12px;background:#fff}
+.benefits>div>svg{width:40px;height:40px;padding:10px}
+.benefits p{gap:2px;margin:0}
+.benefits b{font-size:14px;font-weight:700;line-height:1.6;color:var(--dark)}
+.benefits span{font-size:13px;line-height:1.8;color:var(--muted)}
+}
 #questions details[open]{background:#f7f9fd;border-color:#e3eaf7}
 @media(max-width:767px){:is(#reviews,#all-reviews-dialog) .review-section-title{margin-bottom:20px}:is(#reviews,#all-reviews-dialog) .rating-summary{padding:20px}:is(#reviews,#all-reviews-dialog) #review-list .review{flex-basis:91%;padding:18px}:is(#reviews,#all-reviews-dialog) .review-header{align-items:flex-start}:is(#reviews,#all-reviews-dialog) .review-author{gap:6px}:is(#reviews,#all-reviews-dialog) .review-avatar{width:30px;height:30px}:is(#reviews,#all-reviews-dialog) .review-author>b{max-width:130px}:is(#reviews,#all-reviews-dialog) .review-seller{margin-inline-start:6px}:is(#reviews,#all-reviews-dialog) .review .stars{gap:4px;padding:4px 7px}:is(#reviews,#all-reviews-dialog) .review h3{font-size:14px}.benefits>div>svg{width:36px;height:36px;padding:8px}}
 
@@ -193,8 +203,8 @@
 #product .buy-save b{font-size:14px;font-weight:800}
 #product .buy-save b span{font-size:12px;font-weight:500}
 
-/* Savings badge: 10px more bottom room (desktop) */
-@media(min-width:768px){#product .price-row>.buy-save{padding-bottom:18px}}
+/* Desktop: old/new price stack tight */
+@media(min-width:768px){#product .price-row{row-gap:0}#product .buy-card .price-row{margin-bottom:12px}}
 
 /* Gallery thumbnails: soft tile, quiet hover, navy selected outline */
 #product .thumb{border:1px solid #eceef2;border-radius:12px;background:#f7f8fa!important;transition:border-color .2s,transform .2s,background-color .2s}
