@@ -68,4 +68,10 @@ if(!$('.mobile-buy')&&!$('#ck-page')){
   if(tab==='support')openDialog('#support-sheet')});
 }
 /* Keyboard-aware sheets: while the keyboard is open an input sheet becomes a full-height panel pinned to the visual viewport */
-if(window.visualViewport){const vv=visualViewport,el=document.documentElement,sync=()=>{el.style.setProperty('--vvh',vv.height+'px');el.style.setProperty('--vvt',vv.offsetTop+'px');el.classList.toggle('kb-open',innerHeight-vv.height-vv.offsetTop>100&&!!document.querySelector('dialog[open]'))};vv.addEventListener('resize',sync);vv.addEventListener('scroll',sync);sync();document.addEventListener('focusin',e=>{if(e.target.matches('dialog input,dialog textarea,dialog select'))setTimeout(()=>{sync();e.target.scrollIntoView({block:'center',behavior:'smooth'})},350)})}
+// Keyboard over a dialog: size the open dialog to the visual viewport. rAF-throttled, writes only on change, never scrolls the page (iOS loops otherwise)
+if(window.visualViewport){const vv=visualViewport;let raf=0,cur=null,last='';
+const apply=()=>{raf=0;const d=$('dialog[open]:not(#image-dialog)'),kb=!!d&&innerHeight-vv.height>100,key=kb?vv.height+'|'+vv.offsetTop:'';if(d===cur&&key===last)return;
+if(cur&&(cur!==d||!kb)){cur.style.removeProperty('height');cur.style.removeProperty('transform')}
+cur=kb?d:null;last=key;document.documentElement.classList.toggle('kb-open',kb);if(kb){d.style.height=vv.height+'px';d.style.transform=`translateY(${vv.offsetTop}px)`}};
+const sync=()=>{raf||=requestAnimationFrame(apply)};vv.addEventListener('resize',sync);vv.addEventListener('scroll',sync);document.addEventListener('close',sync,true);
+document.addEventListener('focusin',e=>{const d=e.target.closest('dialog');if(!d||!e.target.matches('input,textarea,select'))return;setTimeout(()=>{let s=e.target.parentElement;while(s&&s!==d&&s.scrollHeight<=s.clientHeight)s=s.parentElement;if(!s)return;const r=e.target.getBoundingClientRect(),b=s.getBoundingClientRect();s.scrollTop+=r.top-b.top-(b.height-r.height)/2},300)})}

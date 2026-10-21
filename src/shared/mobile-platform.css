@@ -35,7 +35,8 @@
     pointer-events: none;
   }
   /* Keyboard open: the sheet fills the visual viewport so the field and its button stay reachable */
-  html.kb-open dialog[open]:not(.image-dialog):not(#image-dialog){inset:var(--vvt,0px) 0 auto 0;height:var(--vvh);max-height:var(--vvh);border-radius:0;transition:none}
+  /* height/translateY are set inline from visualViewport; the white spread hides the page in any keyboard gap */
+  html.kb-open dialog[open]:not(.image-dialog):not(#image-dialog){inset:0 0 auto 0!important;margin:0!important;max-height:none!important;border-radius:0!important;transition:none!important;animation:none!important;box-shadow:0 0 0 100vmax #fff!important}
   html.kb-open dialog[open]::after{display:none}
   /* Fixed bottom bars keep 12px from the screen edge */
   .mobile-buy{padding-block:12px calc(12px + env(safe-area-inset-bottom,0px));grid-template-columns:150px minmax(0,1fr)}

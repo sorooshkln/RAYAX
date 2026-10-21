@@ -161,3 +161,22 @@
 .mc-other{margin-top:44px}
 .mc-other-grid{display:flex}
 }
+
+/* Wrap hygiene: no orphan words in titles, chips and short labels stay on one line */
+.mag-page :is(h1,h2,h3,.mx-side-text b,.mx-spot-copy b){text-wrap:pretty}
+.mag-page :is(.mag-card-category,.mx-overline,.mag-kicker,.mag-sort,.mx-topic b,.mx-topic small,.mag-filters button,.mc-tabs a){white-space:nowrap}
+@media(max-width:767px){
+.mx-topic{flex-basis:240px}
+.mag-page .mag-sort{display:flex;align-items:center;gap:8px}
+}
+/* Phones: secondary article cards become a compact list (thumb + text) instead of cramped 2-col tiles */
+@media(max-width:519px){
+.mag-page .mag-article-grid{grid-template-columns:1fr!important;gap:12px}
+.mag-page .mag-article-grid>.mag-card:not(:first-child){display:grid!important;grid-template-columns:104px minmax(0,1fr);grid-template-rows:auto auto auto;align-content:start;column-gap:12px;padding:8px;border-radius:16px}
+.mag-page .mag-article-grid>.mag-card:not(:first-child) .mag-cover{grid-row:1/4;width:104px;height:104px;aspect-ratio:auto;min-height:0;margin:0;border-radius:12px}
+.mag-page .mag-article-grid>.mag-card:not(:first-child) .mag-card-category{position:static;justify-self:start;height:auto;margin:4px 0 4px;padding:0;background:none;font-size:12px;color:var(--mx-blue,#2546f5)}
+.mag-page .mag-article-grid>.mag-card:not(:first-child) h3{margin:0;padding:0;font-size:14px;line-height:1.7;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.mag-page .mag-article-grid>.mag-card:not(:first-child) p{display:none}
+.mag-page .mag-article-grid>.mag-card:not(:first-child) .mag-card-footer{align-self:end;padding:8px 0 0;border:0;font-size:12px}
+.mag-page .mag-article-grid>.mag-card:not(:first-child) .mag-card-footer>span:first-child{display:none}
+}
