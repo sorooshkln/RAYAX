@@ -6,7 +6,7 @@ const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>'
 const icon=name=>`<svg aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const configs=[{label:'8GB / 256GB',ram:'۸ گیگابایت',storage:'۲۵۶ گیگابایت SSD',price:64980000,old:68400000},{label:'16GB / 512GB',ram:'۱۶ گیگابایت',storage:'۵۱۲ گیگابایت SSD',price:84980000,old:89450000}];
 const related=[{id:'air15plus',name:'مک‌بوک ایر ۱۵ اینچی M3',spec:'16GB RAM · 1TB SSD',price:109980000,image:'home/design/product-laptop.png'},{id:'air13',name:'مک‌بوک ایر ۱۳.۶ اینچی M3',spec:'8GB RAM · 256GB SSD',price:64980000,image:'home/design/product-laptop.png'},{id:'air16',name:'مک‌بوک ایر M3 با حافظه ۱۶ گیگابایت',spec:'16GB RAM · 512GB SSD',price:84980000,image:'home/design/product-laptop.png'},{id:'air15',name:'مک‌بوک ایر ۱۵ اینچی M3',spec:'8GB RAM · 256GB SSD',price:78980000,image:'home/design/product-laptop.png'},{id:'air15pro',name:'مک‌بوک ایر ۱۵ اینچی، نسخه ۵۱۲',spec:'16GB RAM · 512GB SSD',price:96980000,image:'home/design/product-laptop.png'}];
-let selectedColor='میدنایت',selectedConfig=0,imageIndex=0,toastTimer;
+let selectedColor='میدنایت',selectedConfig=0,imageIndex=0;
 const images=['hero.jpg','detail.jpg','display.jpg','lifestyle.jpg','hero.jpg','detail.jpg','display.jpg','lifestyle.jpg'];
 const imageAlts=['نمای اصلی مک‌بوک ایر','نمای نزدیک صفحه‌کلید مک‌بوک ایر','نمایشگر مک‌بوک ایر','مک‌بوک ایر در محیط کار','نمای دوم بدنه مک‌بوک ایر','نمای دوم صفحه‌کلید مک‌بوک ایر','نمای دوم نمایشگر مک‌بوک ایر','نمای دوم محیط کار با مک‌بوک ایر'];
 function read(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}}
@@ -15,7 +15,27 @@ let cart=read('rayax-cart-v1',[]);if(!Array.isArray(cart))cart=[];
 cart=cart.filter(x=>x&&typeof x.key==='string'&&typeof x.name==='string'&&typeof x.color==='string'&&typeof x.config==='string'&&Number.isInteger(x.qty)&&x.qty>0&&x.qty<=5&&Number.isFinite(x.price)&&x.price>0&&(images.includes(x.image)||/^home\/(?:design\/)?[a-z-]+\.(?:webp|png)$/.test(x.image)));
 let reviews=read('rayax-reviews-v1',[]);if(!Array.isArray(reviews))reviews=[];
 reviews=reviews.filter(x=>x&&typeof x.name==='string'&&typeof x.text==='string'&&Number.isInteger(x.rating)&&x.rating>=1&&x.rating<=5);
-function toast(text,type='info'){const el=$('#toast');el.textContent=text;el.className='toast visible '+type;if(type==='info'&&/ثبت|اضافه|کپی|ورود|خارج|حذف/.test(text))el.classList.replace('info','success');if(/حداقل|حداکثر|وارد کنید|در دسترس نیست/.test(text))el.classList.replace('info','warning');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),3500)}
+function toast(text,type='info'){
+  if(type==='info'&&/ثبت|اضافه|کپی|ورود|خارج|حذف/.test(text))type='success';
+  if(/حداقل|حداکثر|وارد کنید|در دسترس نیست/.test(text))type='warning';
+  const stack=$('#toast-stack');if(!stack)return;
+  const labels={success:'موفق',warning:'هشدار',error:'خطا',info:'اطلاع'};
+  if(!labels[type])type='info';
+  while(stack.children.length>=3)dismissToast(stack.firstElementChild,true);
+  const el=document.createElement('div');
+  el.className='toast '+type;el.setAttribute('role','status');
+  el.innerHTML='<span class="toast-icon" aria-hidden="true"></span><div class="toast-body"><b class="toast-title"></b><p class="toast-message"></p></div><button class="toast-close" type="button" aria-label="بستن اعلان"><svg aria-hidden="true"><use href="#i-close"/></svg></button><span class="toast-progress" aria-hidden="true"></span>';
+  el.querySelector('.toast-title').textContent=labels[type];
+  el.querySelector('.toast-message').textContent=text;
+  el.querySelector('.toast-close').addEventListener('click',()=>dismissToast(el));
+  let remaining=4200,started=Date.now();
+  const arm=ms=>{clearTimeout(el._timer);el._timer=setTimeout(()=>dismissToast(el),Math.max(600,ms))};
+  arm(remaining);
+  el.addEventListener('mouseenter',()=>{clearTimeout(el._timer);remaining-=Date.now()-started;el.classList.add('paused')});
+  el.addEventListener('mouseleave',()=>{started=Date.now();el.classList.remove('paused');arm(remaining)});
+  stack.append(el);requestAnimationFrame(()=>el.classList.add('visible'));
+}
+function dismissToast(el,instant=false){if(!el||el.dataset.leaving)return;el.dataset.leaving='1';clearTimeout(el._timer);if(instant){el.remove();return}el.classList.remove('visible');el.classList.add('leaving');setTimeout(()=>el.remove(),240)}
 const mobileModalMedia=matchMedia('(max-width:767px), (hover:none) and (pointer:coarse)');
 let mobileModalScroll=null,mobileModalTheme=null;
 function lockMobileModal(){
