@@ -13,7 +13,7 @@ $$('[data-home-filter]').forEach((b,i)=>{b.addEventListener('click',()=>selectHo
 $('#home-show-all').href=catalogPageURL();
 // Reuse the shared search and mega-menu interactions, directing them to this page's product grid.
 let homeSlide=0;
-const homeSlides=[['hero-0','دیگه نگران گجت‌هات نباش، رایاکس اینجاست!'],['hero-1','هر چیزی برای یک میز کار دوست‌داشتنی'],['hero-2','برای ایده‌های بزرگ، آماده باش!']];
+const homeSlides=[['hero-0','هرچی واسه موبایلت میخوای رو ما داریم! بهترین لوازم جانبی رو رایاکس داره'],['hero-1','کنسولت رو از رایاکس بخر! ارزون‌تره'],['hero-2','بهترین لپ‌تاپی که میتونی داشته باشی! راهنمای خرید لپ‌تاپ']];
 function showHomeSlide(i){homeSlide=(i+homeSlides.length)%homeSlides.length;const [name,title]=homeSlides[homeSlide];$('#home-hero-mobile').srcset=asset('home/banners/'+name+'-mobile.png');$('#home-hero-image').src=asset('home/banners/'+name+'-desktop.png');$('#home-hero-image').alt=title+'؛ مشاهده محصولات';$$('.home-slide-dots button').forEach((b,index)=>{b.classList.toggle('active',index===homeSlide);b.setAttribute('aria-pressed',index===homeSlide)})}
 $('.home-slide-prev').addEventListener('click',()=>showHomeSlide(homeSlide-1));$('.home-slide-next').addEventListener('click',()=>showHomeSlide(homeSlide+1));$$('.home-slide-dots button').forEach((b,i)=>b.addEventListener('click',()=>showHomeSlide(i)));
 const offerDeadline=Date.now()+(14*3600+12*60+10)*1000;

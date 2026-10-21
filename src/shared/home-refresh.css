@@ -154,3 +154,41 @@
 #home .home-need-art{padding-inline-end:40px}@media(max-width:767px){#home .home-need-art{padding-inline:8px 30px;justify-content:flex-end}}
 /* Amazing offers: red hover border */
 #home #home-offer-grid .related-card:hover{border-color:#e5484d}
+/* Offers: hover changes the border to red only (no lift, shadow or image zoom) */
+#home #home-offer-grid .related-card:hover{border-color:#e5484d;transform:none;box-shadow:none}
+#home #home-offer-grid .related-card:hover img{transform:none}
+/* Brand wall: original brand colours, more room from the need cards; heading without kicker */
+#home .home-brand-wall{margin-top:40px}
+#home .home-brand-wall .home-brand-grid button img{filter:none;opacity:1}
+#home .home-shop-head h2{margin-top:0}
+@media(max-width:767px){#home .home-brand-wall{margin-top:28px}}
+/* Desktop hero frame matches the supplied banners exactly (2704×668), so they are never stretched */
+@media(min-width:768px){#home.home-page .home-hero{aspect-ratio:2704/668}}
+/* Three-up banners use the supplied 2704×668 artwork: frame matches its ratio, image shown whole */
+@media(min-width:768px){#home .home-mini-banners{gap:16px}#home .home-mini{height:auto;aspect-ratio:2704/668;padding:0}#home .home-mini picture,#home .home-mini img{display:block;width:100%;height:100%;object-fit:fill}#home .home-mini:hover img{transform:none}}
+/* Mobile hero + three-up banners use the supplied 1620×713 artwork: frames match its ratio exactly */
+@media(max-width:767px){
+#home.home-page .home-hero{height:auto;aspect-ratio:1620/713}
+#home .home-hero-art picture,#home .home-hero-art img{object-fit:fill}
+#home .home-mini{height:auto;aspect-ratio:1620/713;padding:0}
+#home .home-mini picture,#home .home-mini img{display:block;width:100%;height:100%;object-fit:fill}
+}
+/* Real mobile art now exists for hero + three-up banners: show them (promo pair stays a placeholder) */
+@media(max-width:767px){
+#home.home-page .home-hero-art picture,#home.home-page .home-mini picture{display:block}
+#home.home-page .home-slide-prev,#home.home-page .home-slide-next{display:grid}
+#home.home-page .home-slide-dots{display:flex}
+#home.home-page .home-hero,#home.home-page .home-mini{background:none}
+}
+@media(max-width:767px){#home.home-page .home-slide-prev,#home.home-page .home-slide-next{display:none}#home .home-slide-dots{bottom:8px}}
+/* Supplied three-up (437×153) and pair (666×231) banners: same file on desktop and mobile, frames match their ratios, artwork untouched */
+#home .home-mini,#home.home-page .home-mini{height:auto;min-height:0;aspect-ratio:437/153;padding:0;border-radius:0;background:none;overflow:visible}
+#home .home-promo,#home.home-page .home-promo{height:auto;min-height:0;aspect-ratio:666/231;padding:0;border-radius:0;background:none;overflow:visible}
+#home :is(.home-mini,.home-promo) picture,#home.home-page :is(.home-mini,.home-promo) picture{display:block;width:100%;height:100%}
+#home :is(.home-mini,.home-promo) img{display:block;width:100%;height:100%;object-fit:fill;transform:none!important}
+#home .home-promo::after,#home .home-promo::before{content:none}
+@media(max-width:767px){
+#home .home-mini-banners{gap:12px}
+#home .home-mini{flex:0 0 300px}
+#home .home-promo-pair{gap:12px}
+}
