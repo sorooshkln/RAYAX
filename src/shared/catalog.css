@@ -272,3 +272,6 @@ body.plp-filter-open{overflow:hidden}
 .plp-filter-body{display:flex;flex-direction:column}
 #plp-facets{display:contents}
 }
+
+/* Mobile: product titles show 3 lines (was 2) at a tighter leading */
+@media(max-width:767px){html body .plp-grid .product-card-button h3{-webkit-line-clamp:3;line-clamp:3;line-height:20px;min-height:60px;max-height:60px}}
