@@ -54,3 +54,12 @@ html body .ck-page .ck-verified input,html body .ac-field input:read-only{backgr
 @media(prefers-reduced-motion:reduce){.related-card.related-card img{transition:none}.related-card.related-card:hover img{transform:none}}
 /* Product mobile bar: price on the start side, wide add-to-cart button beside it */
 @media(max-width:767px){html body .mobile-buy{grid-template-columns:auto minmax(0,1fr);gap:20px}html body .mobile-buy>.mobile-price-block{grid-column:1;justify-self:start}html body .mobile-buy>.add-to-cart,html body .mobile-buy>.mobile-quantity{grid-column:2}html body .mobile-buy>.mobile-quantity{justify-self:stretch;width:100%}}
+
+/* Product page: every badge is a pill on all widths */
+html body main:has(#product) :is(.stock,.low-stock,.discount,.card-badge,.card-category,.rating-row>span:first-child,.tabs button>span){border-radius:999px!important}
+html body main:has(#product) :is(.low-stock,.card-badge,.card-category,.rating-row>span:first-child){padding-inline:10px}
+
+/* Image dialog thumbnails: centered when they fit, still fully scrollable when they overflow */
+html body #image-dialog .modal-thumbnails{justify-content:flex-start!important}
+html body #image-dialog .modal-thumb:first-child{margin-inline-start:auto}
+html body #image-dialog .modal-thumb:last-child{margin-inline-end:auto}

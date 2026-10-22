@@ -58,6 +58,8 @@ function syncMobileModalState(){
  mobileModalTheme=null;
  window.scrollTo({top:scroll,behavior:'instant'});
 }
+// Horizontal swipe on touch: RTL, so dragging right reveals the next item. A swipe swallows the click that follows it.
+function onSwipe(el,next,prev){if(!el)return;let x=0,y=0,swiped=false;el.addEventListener('touchstart',e=>{x=e.touches[0].clientX;y=e.touches[0].clientY;swiped=false},{passive:true});el.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-x,dy=e.changedTouches[0].clientY-y;if(Math.abs(dx)<40||Math.abs(dx)<Math.abs(dy)*1.5)return;swiped=true;dx>0?next():prev()},{passive:true});el.addEventListener('click',e=>{if(swiped){swiped=false;e.preventDefault();e.stopPropagation()}},true)}
 function openDialog(id){const dialog=$(id);if(dialog._closeTimer){clearTimeout(dialog._closeTimer);dialog._closeTimer=null;dialog.classList.remove('closing');return}if(!dialog.open){lockMobileModal();try{dialog.showModal()}catch(error){syncMobileModalState();throw error}}}
 document.addEventListener('close',syncMobileModalState,true);
 new MutationObserver(syncMobileModalState).observe(document.body,{subtree:true,attributes:true,attributeFilter:['open']});
